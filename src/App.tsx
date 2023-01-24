@@ -1,11 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
-
-
+import "font-awesome/css/font-awesome.min.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,8 +30,9 @@ function Nav() {
         </div>
         <div className="nav__right">
           {/* Check if this div is nessessary */}
-
-          <CartPreview />
+          <div className="nav__item">
+            <CartPreview />
+          </div>
         </div>
       </nav>
       {productList}
@@ -48,10 +45,11 @@ function CartPreview() {
     <div className="cart-preview">
       <div className="cart-preview__left mr-l">
         <i className="fa fa-shopping-cart"></i>
+        1
         {/* {{ cartService.countTotalQuantity() }} */}
       </div>
       <div className="vl"></div>
-      <div className="cart-preview__right">{/* {{ cartService.getTotalPrice() }} kr */}</div>
+      <div className="cart-preview__right">0 kr{/* {{ cartService.getTotalPrice() }} kr */}</div>
       <span className="fa fa-chevron-circle-right"></span>
     </div>
   );
