@@ -14,6 +14,3 @@ export interface IProduct {
   producer: string;
 }
 
-export interface IProductInCart extends IProduct {
-  quantity: number;
-}

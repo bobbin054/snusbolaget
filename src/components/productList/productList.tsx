@@ -1,5 +1,6 @@
-import { PRODUCTS } from "../../assets/products";
+import { PRODUCTS } from "../../assets/Products";
 import { IProduct } from "../../interfaces/IProduct";
+import { CartService } from "../../services/CartService";
 
 export function ProductList() {
     return (
@@ -15,7 +16,7 @@ export function ProductList() {
                   <button
                     type="button"
                     className="fa fa-cart-plus product-container__button"
-                    // (click)="this.cartService.addToCart(product)"
+                    //  onClick={  CartService.addToCart(product) }
                   >
                     Add to cart
                   </button>

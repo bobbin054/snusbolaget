@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CartPreview } from "../cart/cart.preview";
-import { ProductList } from "../productList/productList";
+import { CartPreview } from "../cart/CartPreview";
+import { ProductList } from "../productList/ProductList";
 
 export
  function Nav() {
