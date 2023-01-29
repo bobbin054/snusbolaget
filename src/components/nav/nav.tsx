@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { CartService } from "../../services/CartService";
 import { CartPreview } from "../cart/CartPreview";
 import { ProductList } from "../productList/ProductList";
 
-
+const cartService = new CartService();
 
 export function Nav() {
-  const [productList, setProductList] = useState<JSX.Element | null>(null);
+  cartService.productsInCart$.subscribe((products) => {
+    console.log(products);
+  });
+  const [productList, setProductList] = useState<JSX.Element | null>();
+  
   return (
     <>
       <nav className="nav">
