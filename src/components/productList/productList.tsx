@@ -1,11 +1,31 @@
+import { useReducer, useState } from "react";
 import { IProduct } from "../../interfaces/IProduct";
-import { CartService } from "../../services/CartService";
+import { IProductInCart } from "../../interfaces/IProductInCart";
 
-export function ProductList({ PRODUCTS }: { PRODUCTS: IProduct[] }) {
+export function ProductList({ products }: { products: IProduct[] }) {
+  // state for products in cart
+  const [productsInCart, setProductsInCart] = useState<IProductInCart[]>([]);
+
+  function handleOnClick(product: IProduct) {
+    const alreadyAddedProduct = productsInCart.find((p) => p.name === product.name);
+    if (alreadyAddedProduct) {
+      alreadyAddedProduct.quantity++;
+      setProductsInCart([...productsInCart]);
+    } else {
+      setProductsInCart([
+        ...productsInCart,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ]);
+    }
+  }
+
   return (
     <>
       <div className="product-container">
-        {PRODUCTS?.map((product) => {
+        {products?.map((product) => {
           return (
             <div className="product-container__item">
               <img src={product.imageUrl} title={product.name} className="product-container__img" alt="product image" />
@@ -15,7 +35,9 @@ export function ProductList({ PRODUCTS }: { PRODUCTS: IProduct[] }) {
                 <button
                   type="button"
                   className="fa fa-cart-plus product-container__button"
-                  //  onClick={  CartService.addToCart(product) }
+                  onClick={() => {
+                    handleOnClick(product);
+                  }}
                 >
                   Add to cart
                 </button>

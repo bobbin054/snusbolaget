@@ -1,16 +1,10 @@
 import { useState } from "react";
-import { CartService } from "../../services/CartService";
+import { PRODUCTS } from "../../assets/Products";
 import { CartPreview } from "../cart/CartPreview";
 import { ProductList } from "../productList/ProductList";
 
-const cartService = new CartService();
-
 export function Nav() {
-  cartService.productsInCart$.subscribe((products) => {
-    console.log(products);
-  });
   const [productList, setProductList] = useState<JSX.Element | null>();
-  
   return (
     <>
       <nav className="nav">
@@ -22,7 +16,7 @@ export function Nav() {
             className="nav__item"
             type="button"
             onClick={() => {
-              setProductList(<ProductList />);
+              setProductList(<ProductList products={PRODUCTS} />);
             }}
           >
             Products
