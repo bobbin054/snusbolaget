@@ -53,8 +53,8 @@ export class CartService {
   public removeFromCart(product: IProductInCart): void {
     this.productsInCart = this.productsInCart.filter((p) => p !== product);
   }
+}
 
-  public countTotalQuantity(): number {
-    return this.productsInCart.reduce((prev, curr) => prev + curr.quantity, 0);
-  }
+export function countTotalQuantity(productsInCart: IProductInCart[]): number {
+  return productsInCart.reduce((prev, curr) => prev + curr.quantity, 0);
 }

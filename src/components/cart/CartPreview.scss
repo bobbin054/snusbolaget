@@ -1,0 +1,32 @@
+$border-color: #d41920;
+.cart-preview {
+  display: grid;
+  grid-template-columns: 2fr 1fr 5fr 1fr;
+  color: white;
+  background-color: #ed1c24;
+  border-bottom: 5px solid #d41920;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  align-items: center;
+  align-content: center;
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.vl {
+  border-left: 5px solid $border-color;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+}
+.mr-l {
+  margin-right: 16px;
+}
+.mr-bs {
+  margin-right: 8px;
+}
+.ml-bs {
+  margin-left: 8px;
+}
