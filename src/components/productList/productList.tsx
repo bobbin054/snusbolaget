@@ -1,11 +1,5 @@
-import { useReducer, useState } from "react";
 import { IProduct } from "../../interfaces/IProduct";
-import { IProductInCart } from "../../interfaces/IProductInCart";
-
 export function ProductList({ products, addToCart }: { products: IProduct[]; addToCart: (product: IProduct) => void }) {
-  // state for products in cart
-  const [productsInCart, setProductsInCart] = useState<IProductInCart[]>([]);
-
   return (
     <>
       <div className="product-container">
