@@ -1,4 +1,5 @@
 import { IProduct } from "../../interfaces/IProduct";
+import "./productList.scss";
 export function ProductList({ products, addToCart }: { products: IProduct[]; addToCart: (product: IProduct) => void }) {
   return (
     <>

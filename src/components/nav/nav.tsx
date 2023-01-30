@@ -4,11 +4,12 @@ import { IProduct } from "../../interfaces/IProduct";
 import { IProductInCart } from "../../interfaces/IProductInCart";
 import { CartPreview } from "../cart/CartPreview";
 import { ProductList } from "../productList/ProductList";
+import "./nav.scss";
 
 export function Nav() {
   const [productList, setProductList] = useState<JSX.Element | null>();
   const [productsInCart, setProductsInCart] = useState<IProductInCart[]>([]);
-  function handleAddToCart(productToAdd: IProduct) {
+  const handleAddToCart = (productToAdd: IProduct): void => {
     const alreadyAddedProduct = productsInCart.find((p) => p.name === productToAdd.name);
     if (alreadyAddedProduct) {
       alreadyAddedProduct.quantity++;
@@ -17,7 +18,7 @@ export function Nav() {
       productsInCart.push({ ...productToAdd, quantity: 1 });
       setProductsInCart([...productsInCart]);
     }
-  }
+  };
 
   return (
     <>
@@ -36,11 +37,8 @@ export function Nav() {
             Products
           </button>
         </div>
-        <div className="nav__right">
-          {/* Check if this div is nessessary */}
-          <div className="nav__item">
-            <CartPreview productsInCart={productsInCart} />
-          </div>
+        <div className="nav__item">
+          <CartPreview productsInCart={productsInCart} />
         </div>
       </nav>
       {productList}
