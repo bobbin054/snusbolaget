@@ -1,16 +1,24 @@
-import "./App.scss";
-import "font-awesome/css/font-awesome.min.css";
 import { Nav } from "./components/nav/nav";
-import { CartContext, CartProvider } from "./components/cartProvider/cartProvider";
+import { CartProvider } from "./components/cartProvider/cartProvider";
 import { ProductsProvider } from "./components/productsProvider/productsProvider";
-import { Card } from "./components/card/card";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ProductList } from "./components/productList/productList";
+import { Cart } from "./components/cart/cart";
+import "font-awesome/css/font-awesome.min.css";
 
 export default function App() {
-  // return <Card header={'jek'}>content</Card>
   return (
     <CartProvider>
       <ProductsProvider>
-        <Nav />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Nav />}>
+              <Route path="products" element={<ProductList />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="*" element={<div>You shall not pass!</div>} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </ProductsProvider>
     </CartProvider>
   );

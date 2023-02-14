@@ -1,30 +1,27 @@
 import React from "react";
-import { Cart } from "../cart/cart";
+import { Link, Outlet } from "react-router-dom";
 import { CartPreview } from "../cartPreview/cartPreview";
-import { ProductList } from "../productList/productList";
 import "./nav.scss";
 
 export function Nav() {
-  const [renderProductList, setRenderProductList] = React.useState<boolean>(false);
-  const [renderCart, setRenderCart] = React.useState<boolean>(false);
-  
   return (
     <>
       <nav className="nav">
-        <div className="nav__left">
-          <button className="nav__item mr-2" type="button">
+        <div className="nav__group">
+          <Link className="nav__item" to="/">
             snushandeln.se
-          </button>
-          <button className="nav__item" type="button" onClick={() => setRenderProductList(true)}>
-            Products
-          </button>
+          </Link>
+          <Link className="nav__item" to="/products">
+            /products
+          </Link>
         </div>
-        <button className="nav__item" type="button" title="Cart preview" onClick={() => setRenderCart(true)}>
-          <CartPreview />
-        </button>
+        <div className="nav__group">
+        <Link className="nav__item" to="/cart">
+            <CartPreview />
+          </Link>
+        </div>
       </nav>
-      {renderProductList && <ProductList />}
-      {renderCart && <Cart />}
+      <Outlet />
     </>
   );
 }
