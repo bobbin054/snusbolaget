@@ -13,6 +13,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Nav />}>
+              <Route path="/" element={<div>Snus is tasty</div>} />
               <Route path="products" element={<ProductList />} />
               <Route path="cart" element={<Cart />} />
               <Route path="*" element={<div>You shall not pass!</div>} />

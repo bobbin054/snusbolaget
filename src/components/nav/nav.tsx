@@ -9,7 +9,7 @@ export function Nav() {
       <nav className="nav">
         <div className="nav__group">
           <Link className="nav__item" to="/">
-            snushandeln.se
+            snus online
           </Link>
           <Link className="nav__item" to="/products">
             /products
