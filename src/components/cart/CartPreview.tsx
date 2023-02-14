@@ -1,9 +1,11 @@
-import { IProductInCart } from "../../interfaces/IProductInCart";
+import React from "react";
 import { countTotalQuantity, getTotalPrice } from "../../services/CartService";
+import { CartContext, ICartContext } from "../cartProvider/CartProvider";
 import "./CartPreview.scss";
 
-export function CartPreview({ productsInCart }: { productsInCart: IProductInCart[] }) {
-  console.log("CartPreview");
+export function CartPreview() {
+  const { productsInCart } = React.useContext<ICartContext>(CartContext);
+
   return (
     <div className="cart-preview">
       <div className="ml-bs mr-bs">

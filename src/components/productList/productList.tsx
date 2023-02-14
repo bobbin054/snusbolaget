@@ -1,6 +1,10 @@
 import { IProduct } from "../../interfaces/IProduct";
+import { CartContext } from "../cartProvider/CartProvider";
+import React from "react";
 import "./productList.scss";
-export function ProductList({ products, addToCart }: { products: IProduct[]; addToCart: (product: IProduct) => void }) {
+
+export function ProductList({ products }: { products: IProduct[] }) {
+  const { handleAddToCart } = React.useContext(CartContext);
   return (
     <>
       <div className="product-container">
@@ -15,7 +19,7 @@ export function ProductList({ products, addToCart }: { products: IProduct[]; add
                   type="button"
                   className="fa fa-cart-plus product-container__button"
                   onClick={() => {
-                    return addToCart(product);
+                    return handleAddToCart(product);
                   }}
                 >
                   Add to cart
