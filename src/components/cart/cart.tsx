@@ -4,7 +4,7 @@ import * as Popover from "@radix-ui/react-popover";
 import { CartContext } from "../cartProvider/cartProvider";
 
 export function Cart() {
-  const { productsInCart,totalPrice,decreaseQuantity,increaseQuantity } = React.useContext(CartContext);
+  const { productsInCart,totalPrice,decreaseQuantity,increaseQuantity,remove } = React.useContext(CartContext);
   return (
     <>
       <table className="table table-hover">
@@ -51,7 +51,7 @@ export function Cart() {
                     className="btn btn-danger fa fa-trash-o trash-can-xmark"
                     title="Remove from cart"
                     onClick={() => {
-                      // removeFromCart(productInCart)
+                       remove(productInCart)
                     }}
                   />
                 </td>

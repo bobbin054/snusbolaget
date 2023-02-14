@@ -9,6 +9,7 @@ export interface ICartContext {
   totalPrice: number;
   decreaseQuantity: (productToDecrease: IProductInCart) => void;
   increaseQuantity: (productToIncrease: IProductInCart) => void;
+  remove: (productToRemove: IProductInCart) => void;
 }
 const defaultProductsInCart: IProductInCart[] = [
   {
@@ -74,9 +75,11 @@ export const CartContext = React.createContext<ICartContext>({
   totalPrice: 0,
   decreaseQuantity: () => {},
   increaseQuantity: () => {},
+  remove: () => {},
 });
 export const CartProvider = ({ children }: { children: any }) => {
   const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>(defaultProductsInCart);
+
   const totalPrice = productsInCart.reduce((acc, p) => acc + p.price * p.quantity, 0);
   const totalQuantity = productsInCart.reduce((acc, p) => acc + p.quantity, 0);
 
@@ -93,7 +96,15 @@ export const CartProvider = ({ children }: { children: any }) => {
 
   const decreaseQuantity = (product: IProductInCart) => {
     product.quantity--;
-    setProductsInCart([...productsInCart]);
+    if (product.quantity <= 0) {
+      remove(product);
+    } else {
+      setProductsInCart([...productsInCart]);
+    }
+  };
+
+  const remove = (productToRemove: IProductInCart) => {
+    setProductsInCart(productsInCart.filter((p) => p.id !== productToRemove.id));
   };
 
   const increaseQuantity = (product: IProductInCart) => {
@@ -103,7 +114,15 @@ export const CartProvider = ({ children }: { children: any }) => {
 
   return (
     <CartContext.Provider
-      value={{ productsInCart, handleAddToCart: add, totalQuantity, totalPrice, decreaseQuantity, increaseQuantity }}
+      value={{
+        productsInCart,
+        handleAddToCart: add,
+        remove,
+        totalQuantity,
+        totalPrice,
+        decreaseQuantity,
+        increaseQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
