@@ -1,6 +1,6 @@
 import React from "react";
 import { PRODUCTS } from "../../assets/Products";
-import { IProduct } from "../../interfaces/IProduct";
+import { IProduct } from "../../interfaces/iProduct";
 
 export interface IProductsContext {
   products: IProduct[];

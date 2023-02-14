@@ -1,6 +1,6 @@
 import { ReplaySubject } from "rxjs";
-import { IProduct } from "../interfaces/IProduct";
-import { IProductInCart } from "../interfaces/IProductInCart";
+import { IProduct } from "../interfaces/iProduct";
+import { IProductInCart } from "../interfaces/iProductInCart";
 
 export class CartService {
   public productsInCart$ = new ReplaySubject<IProductInCart[]>();

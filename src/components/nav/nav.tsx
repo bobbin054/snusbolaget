@@ -1,7 +1,7 @@
 import React from "react";
 import { Cart } from "../cart/cart";
-import { CartPreview } from "../cartPreview/CartPreview";
-import { ProductList } from "../productList/ProductList";
+import { CartPreview } from "../cartPreview/cartPreview";
+import { ProductList } from "../productList/productList";
 import "./nav.scss";
 
 export function Nav() {

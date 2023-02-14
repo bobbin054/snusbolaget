@@ -1,4 +1,4 @@
-import { CartContext } from "../cartProvider/CartProvider";
+import { CartContext } from "../cartProvider/cartProvider";
 import React from "react";
 import "./productList.scss";
 import { ProductsContext } from "../productsProvider/productsProvider";

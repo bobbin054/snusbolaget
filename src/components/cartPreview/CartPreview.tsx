@@ -1,6 +1,6 @@
 import React from "react";
-import { countTotalQuantity, getTotalPrice } from "../../services/CartService";
-import { CartContext, ICartContext } from "../cartProvider/CartProvider";
+import { countTotalQuantity, getTotalPrice } from "../../services/cartService";
+import { CartContext, ICartContext } from "../cartProvider/cartProvider";
 import "./CartPreview.scss";
 
 export function CartPreview() {
