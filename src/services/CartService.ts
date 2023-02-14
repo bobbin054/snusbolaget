@@ -52,9 +52,3 @@ export class CartService {
     this.productsInCart = this.productsInCart.filter((p) => p !== product);
   }
 }
-export function getTotalPrice(productsInCart: IProductInCart[]): number {
-  return productsInCart.reduce((prev, curr) => prev + curr.price * curr.quantity, 0);
-}
-export function countTotalQuantity(productsInCart: IProductInCart[]): number {
-  return productsInCart.reduce((prev, curr) => prev + curr.quantity, 0);
-}

@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./cart.module.scss";
 import * as Popover from "@radix-ui/react-popover";
+import { CartContext } from "../cartProvider/cartProvider";
 
 export function Cart() {
+  const { productsInCart,totalPrice,decreaseQuantity,increaseQuantity } = React.useContext(CartContext);
   return (
     <>
       <table className="table table-hover">
@@ -16,46 +18,50 @@ export function Cart() {
           </tr>
         </thead>
         <tbody>
-          <tr className="table-row align-baseline">
-            <td>productName</td>
-            <td>
-              <button
-                type="button"
-                className="cart__quantity"
-                onClick={() => {
-                  // decreaseQuantity(productInCart)
-                }}
-              >
-                -
-              </button>
-              20
-              <button
-                type="button"
-                className="cart__quantity"
-                onClick={() => {
-                  // increaseQuantity(productInCart)
-                }}
-              >
-                +
-              </button>
-            </td>
-            <td>price</td>
-            <td>price * quantity</td>
-            <td>
-              <button
-                type="button"
-                className="btn btn-danger fa fa-trash-o trash-can-xmark"
-                title="Remove from cart"
-                onClick={() => {
-                  // removeFromCart(productInCart)
-                }}
-              />
-            </td>
-          </tr>
+          {productsInCart.map((productInCart) => {
+            return (
+              <tr className="table-row align-baseline">
+                <td>{productInCart.name}</td>
+                <td>
+                  <button
+                    type="button"
+                    className="cart__quantity"
+                    onClick={() => {
+                       decreaseQuantity(productInCart)
+                    }}
+                  >
+                    -
+                  </button>
+                  {productInCart.quantity}
+                  <button
+                    type="button"
+                    className="cart__quantity"
+                    onClick={() => {
+                      increaseQuantity(productInCart)
+                    }}
+                  >
+                    +
+                  </button>
+                </td>
+                <td>{productInCart.price}</td>
+                <td>{productInCart.price * productInCart.quantity} </td>
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn-danger fa fa-trash-o trash-can-xmark"
+                    title="Remove from cart"
+                    onClick={() => {
+                      // removeFromCart(productInCart)
+                    }}
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <div className="alert alert-danger">Your cart is empty</div>
-      <div className="alert alert-success">Total: getTotalPrice()</div>
+      <div className="alert alert-success">Total: {totalPrice}</div>
     </>
   );
 }
