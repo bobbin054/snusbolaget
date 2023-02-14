@@ -5,7 +5,7 @@ import { ProductsContext } from "../productsProvider/productsProvider";
 
 export function ProductList() {
   const products = React.useContext(ProductsContext);
-  const { handleAddToCart } = React.useContext(CartContext);
+  const { add: handleAddToCart } = React.useContext(CartContext);
   return (
     <>
       <div className="product-container">

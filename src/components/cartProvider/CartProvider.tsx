@@ -4,7 +4,7 @@ import { IProductInCart } from "../../interfaces/iProductInCart";
 
 export interface ICartContext {
   productsInCart: IProductInCart[];
-  handleAddToCart: (productToAdd: IProduct) => void;
+  add: (productToAdd: IProduct) => void;
   totalQuantity: number;
   totalPrice: number;
   decreaseQuantity: (productToDecrease: IProductInCart) => void;
@@ -70,16 +70,16 @@ const defaultProductsInCart: IProductInCart[] = [
 
 export const CartContext = React.createContext<ICartContext>({
   productsInCart: [],
-  handleAddToCart: () => {},
+  add: () => {},
+  remove: () => {},
+  increaseQuantity: () => {},
+  decreaseQuantity: () => {},
   totalQuantity: 0,
   totalPrice: 0,
-  decreaseQuantity: () => {},
-  increaseQuantity: () => {},
-  remove: () => {},
 });
 
 export const CartProvider = ({ children }: { children: any }) => {
-  const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>(defaultProductsInCart);
+  const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>([]);
 
   const totalPrice = productsInCart.reduce((acc, p) => acc + p.price * p.quantity, 0);
   const totalQuantity = productsInCart.reduce((acc, p) => acc + p.quantity, 0);
@@ -117,7 +117,7 @@ export const CartProvider = ({ children }: { children: any }) => {
     <CartContext.Provider
       value={{
         productsInCart,
-        handleAddToCart: add,
+        add: add,
         remove,
         totalQuantity,
         totalPrice,
