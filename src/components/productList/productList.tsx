@@ -1,9 +1,10 @@
-import { IProduct } from "../../interfaces/IProduct";
 import { CartContext } from "../cartProvider/CartProvider";
 import React from "react";
 import "./productList.scss";
+import { ProductsContext } from "../productsProvider/productsProvider";
 
-export function ProductList({ products }: { products: IProduct[] }) {
+export function ProductList() {
+  const products = React.useContext(ProductsContext);
   const { handleAddToCart } = React.useContext(CartContext);
   return (
     <>

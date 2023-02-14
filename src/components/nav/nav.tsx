@@ -1,12 +1,10 @@
-import  { useState } from "react";
-import { PRODUCTS } from "../../assets/Products";
-import { CartPreview } from "../cart/CartPreview";
+import React from "react";
+import { CartPreview } from "../cartPreview/CartPreview";
 import { ProductList } from "../productList/ProductList";
 import "./nav.scss";
 
 export function Nav() {
-  const [productList, setProductList] = useState<JSX.Element | null>();
-
+  const [renderProductList, setRenderProductList] = React.useState<boolean>(false);
   return (
     <>
       <nav className="nav">
@@ -14,13 +12,7 @@ export function Nav() {
           <button className="nav__item mr-2" type="button">
             snushandeln.se
           </button>
-          <button
-            className="nav__item"
-            type="button"
-            onClick={() => {
-              setProductList(<ProductList products={PRODUCTS} />);
-            }}
-          >
+          <button className="nav__item" type="button" onClick={() => setRenderProductList(true)}>
             Products
           </button>
         </div>
@@ -28,7 +20,7 @@ export function Nav() {
           <CartPreview />
         </div>
       </nav>
-      {productList}
+      {renderProductList && <ProductList />}
     </>
   );
 }
