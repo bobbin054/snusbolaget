@@ -1,10 +1,12 @@
 import React from "react";
+import { Cart } from "../cart/cart";
 import { CartPreview } from "../cartPreview/CartPreview";
 import { ProductList } from "../productList/ProductList";
 import "./nav.scss";
 
 export function Nav() {
   const [renderProductList, setRenderProductList] = React.useState<boolean>(false);
+  const [renderCart, setRenderCart] = React.useState<boolean>(false);
   return (
     <>
       <nav className="nav">
@@ -16,11 +18,12 @@ export function Nav() {
             Products
           </button>
         </div>
-        <div className="nav__item">
+        <button className="nav__item" type="button" title="Cart preview" onClick={() => setRenderCart(true)}>
           <CartPreview />
-        </div>
+        </button>
       </nav>
       {renderProductList && <ProductList />}
+      {renderCart && <Cart />}
     </>
   );
 }
