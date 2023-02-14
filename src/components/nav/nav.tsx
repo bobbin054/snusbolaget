@@ -7,6 +7,7 @@ import "./nav.scss";
 export function Nav() {
   const [renderProductList, setRenderProductList] = React.useState<boolean>(false);
   const [renderCart, setRenderCart] = React.useState<boolean>(false);
+  
   return (
     <>
       <nav className="nav">
