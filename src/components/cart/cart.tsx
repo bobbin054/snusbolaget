@@ -20,7 +20,7 @@ export function Cart() {
         <tbody>
           {productsInCart.map((productInCart) => {
             return (
-              <tr className="table-row align-baseline">
+              <tr key={productInCart.id} className="table-row align-baseline">
                 <td>{productInCart.name}</td>
                 <td>
                   <button
