@@ -77,6 +77,7 @@ export const CartContext = React.createContext<ICartContext>({
   increaseQuantity: () => {},
   remove: () => {},
 });
+
 export const CartProvider = ({ children }: { children: any }) => {
   const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>(defaultProductsInCart);
 
