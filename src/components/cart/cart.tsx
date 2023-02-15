@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./cart.module.scss";
-import * as Popover from "@radix-ui/react-popover";
 import { CartContext } from "../cartProvider/cartProvider";
+import { Link } from "react-router-dom";
 
 export function Cart() {
-  const { productsInCart,totalPrice,decreaseQuantity,increaseQuantity,remove } = React.useContext(CartContext);
+  const { productsInCart, totalPrice, decreaseQuantity, increaseQuantity, remove } = React.useContext(CartContext);
+  if (productsInCart.length === 0) {
+    return <div className={styles.cart__empty}>Cart is empty <Link to="/products">Take me to the snus</Link></div>;
+  }
   return (
     <>
       <table className="table table-hover">
@@ -27,7 +30,7 @@ export function Cart() {
                     type="button"
                     className="cart__quantity"
                     onClick={() => {
-                       decreaseQuantity(productInCart)
+                      decreaseQuantity(productInCart);
                     }}
                   >
                     -
@@ -37,7 +40,7 @@ export function Cart() {
                     type="button"
                     className="cart__quantity"
                     onClick={() => {
-                      increaseQuantity(productInCart)
+                      increaseQuantity(productInCart);
                     }}
                   >
                     +
@@ -51,7 +54,7 @@ export function Cart() {
                     className="btn btn-danger fa fa-trash-o trash-can-xmark"
                     title="Remove from cart"
                     onClick={() => {
-                       remove(productInCart)
+                      remove(productInCart);
                     }}
                   />
                 </td>
@@ -60,7 +63,6 @@ export function Cart() {
           })}
         </tbody>
       </table>
-      <div className="alert alert-danger">Your cart is empty</div>
       <div className="alert alert-success">Total: {totalPrice}</div>
     </>
   );
