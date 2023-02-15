@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProductList } from "./components/productList/productList";
 import { Cart } from "./components/cart/cart";
 import "font-awesome/css/font-awesome.min.css";
+import "./app.scss";
 
 export default function App() {
   return (
