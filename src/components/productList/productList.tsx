@@ -25,7 +25,7 @@ export function ProductList() {
               </Link>
               <div>{product.name}</div>
               <div>
-                <Select options={QUANTITIES} selected={quantity} setSelected={setQuantity}></Select>1 can - {product.price} kr
+                <Select options={QUANTITIES} selected={quantity} setSelected={setQuantity}></Select>
                 <button
                   type="button"
                   className="fa fa-cart-plus product-container__button"
