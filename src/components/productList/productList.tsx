@@ -3,10 +3,12 @@ import React from "react";
 import "./productList.scss";
 import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
+import Select, { QUANTITIES } from "../select/select";
 
 export function ProductList() {
-  const {products} = React.useContext(ProductsContext);
-  const { add: handleAddToCart } = React.useContext(CartContext);
+  const { products } = React.useContext(ProductsContext);
+  const { add } = React.useContext(CartContext);
+  const [quantity, setQuantity] = React.useState(QUANTITIES[1]);
   return (
     <>
       <div className="product-container">
@@ -23,12 +25,12 @@ export function ProductList() {
               </Link>
               <div>{product.name}</div>
               <div>
-                1 can - {product.price} kr
+                <Select options={QUANTITIES} selected={quantity} setSelected={setQuantity}></Select>1 can - {product.price} kr
                 <button
                   type="button"
                   className="fa fa-cart-plus product-container__button"
                   onClick={() => {
-                    return handleAddToCart(product);
+                    return add(product);
                   }}
                 >
                   Add to cart
