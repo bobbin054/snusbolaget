@@ -4,7 +4,7 @@ import { IProductInCart } from "../../interfaces/iProductInCart";
 
 export interface ICartContext {
   productsInCart: IProductInCart[];
-  add: (productToAdd: IProduct) => void;
+  add: (productToAdd: IProduct, numToAdd: number) => void;
   totalQuantity: number;
   totalPrice: number;
   decreaseQuantity: (productToDecrease: IProductInCart) => void;
@@ -84,7 +84,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalPrice = productsInCart.reduce((acc, p) => acc + p.price * p.quantity, 0);
   const totalQuantity = productsInCart.reduce((acc, p) => acc + p.quantity, 0);
 
-  const add = (productToAdd: IProduct,numToAdd = 1) => {
+  const add = (productToAdd: IProduct, numToAdd = 1) => {
     const alreadyAddedProduct = productsInCart.find((p) => p.name === productToAdd.name);
     if (alreadyAddedProduct) {
       alreadyAddedProduct.quantity += numToAdd;
