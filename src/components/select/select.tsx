@@ -1,3 +1,4 @@
+import styles from './select.module.scss';
 export interface IOptions {
   id: number;
   label: string;
@@ -17,6 +18,7 @@ export default function Select({ label, options, selected, setSelected }: ISelec
     <>
       {label && <label htmlFor="quantity">Quantity</label>}
       <select
+        className={styles.select}
         title="quantity"
         name="quantity"
         value={selected.id}
