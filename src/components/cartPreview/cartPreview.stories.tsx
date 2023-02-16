@@ -17,15 +17,11 @@ export default {
   component: CartPreview,
 } as ComponentMeta<typeof CartPreview>;
 
-const cartProvider =  <CartProvider/>
-
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof CartPreview> = (args) => (
-  <CartProvider>
-    <CartPreview></CartPreview>
-  </CartProvider>
-);
+const Template: ComponentStory<typeof CartPreview> = (args) => {
+  return <CartPreview {...args} />;
+};
 export const Default = Template.bind({});
 
 Default.args = {
