@@ -78,7 +78,7 @@ export const CartContext = React.createContext<ICartContext>({
   totalPrice: 0,
 });
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export const CartProvider = ({ children }: { children?: ReactNode }) => {
   const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>([]);
 
   const totalPrice = productsInCart.reduce((acc, p) => acc + p.price * p.quantity, 0);
