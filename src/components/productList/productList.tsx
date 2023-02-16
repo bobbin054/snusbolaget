@@ -3,7 +3,7 @@ import React from "react";
 import "./productList.scss";
 import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
-import Select, { QUANTITIES } from "../select/select";
+import Select, { IOptions } from "../select/select";
 import { IProduct } from "../../interfaces/iProduct";
 
 export function ProductList() {
@@ -18,8 +18,14 @@ export function ProductList() {
     </>
   );
 }
+const QUANTITIES: IOptions[] = [
+  { id: 1, label: "1 can", enabled: true },
+  { id: 2, label: "10 cans", enabled: true },
+  { id: 3, label: "30 cans", enabled: true },
+];
 
 const Product = ({ product }: { product: IProduct }) => {
+  //  const quantities : IOptions[] =
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(QUANTITIES[1]);
   return (

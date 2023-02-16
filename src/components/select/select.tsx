@@ -1,18 +1,13 @@
 import { useState } from "react";
 
-export const QUANTITIES: IOptions[] = [
-  { id: 1, label: "1 can", enabled: true },
-  { id: 2, label: "10 cans", enabled: true },
-  { id: 3, label: "30 cans", enabled: true },
-];
 
-interface IOptions {
+export interface IOptions {
   id: number;
   label: string;
   enabled: boolean;
 }
 
-interface ISelectProps {
+export interface ISelectProps {
   label?: string;
   options: IOptions[];
   selected: IOptions;
