@@ -11,14 +11,15 @@ export interface ISelectProps {
   options: IOptions[];
   selected: IOptions;
   setSelected: (selected: IOptions) => void;
+  className?: string;
 }
 
-export default function Select({ label, options, selected, setSelected }: ISelectProps) {
+export default function Select({ label, options, selected, setSelected,className }: ISelectProps) {
   return (
     <>
       {label && <label htmlFor="quantity">Quantity</label>}
       <select
-        className={styles.select}
+        className={className}
         title="quantity"
         name="quantity"
         value={selected.id}

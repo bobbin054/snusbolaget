@@ -1,17 +1,16 @@
 import { CartContext } from "../cartProvider/cartProvider";
 import React from "react";
-import "./productList.scss";
 import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
 import Select, { IOptions } from "../select/select";
 import { IProduct } from "../../interfaces/iProduct";
-import { range } from "lodash";
+import styles from "./productList.module.scss";
 
 export function ProductList() {
   const { products } = React.useContext(ProductsContext);
   return (
     <>
-      <div className="product-container">
+      <div className={`${styles.row} ${styles.gap}`}>
         {products?.map((product) => {
           return <Product key={product.id} product={product}></Product>;
         })}
@@ -35,21 +34,21 @@ const Product = ({ product }: { product: IProduct }) => {
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(quantities[1]);
   return (
-    <div key={product.id} className="product-container__item">
+    <div key={product.id} className={styles.column}>
       <Link to={`/products/${product.name}`}>
-        <img src={product.imageUrl} title={product.name} className="product-container__img" alt="product image" />
+        <img src={product.imageUrl} title={product.name} className={styles.img} alt="product image" />
       </Link>
       <div>{product.name}</div>
-      <div>
-        <Select options={quantities} selected={quantity} setSelected={setQuantity}></Select>
+      <div className={`${styles.row}`}>
+        <Select className={styles.select} options={quantities} selected={quantity} setSelected={setQuantity}></Select>
         <button
           type="button"
-          className="fa fa-cart-plus product-container__button"
+          className={`${styles.btn}`}
           onClick={() => {
             return add(product, quantity.data);
           }}
         >
-          Add to cart
+          <i className="fa fa-cart-plus"></i> Add to cart
         </button>
       </div>
     </div>
