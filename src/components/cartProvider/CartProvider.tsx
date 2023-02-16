@@ -90,7 +90,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       alreadyAddedProduct.quantity += numToAdd;
       setProductsInCart([...productsInCart]);
     } else {
-      productsInCart.push({ ...productToAdd, quantity: 1 });
+      productsInCart.push({ ...productToAdd, quantity: numToAdd });
       setProductsInCart([...productsInCart]);
     }
   };
