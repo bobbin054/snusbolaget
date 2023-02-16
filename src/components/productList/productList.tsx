@@ -5,6 +5,7 @@ import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
 import Select, { IOptions } from "../select/select";
 import { IProduct } from "../../interfaces/iProduct";
+import {range} from "lodash";
 
 export function ProductList() {
   const { products } = React.useContext(ProductsContext);
@@ -25,7 +26,9 @@ const QUANTITIES: IOptions[] = [
 ];
 
 const Product = ({ product }: { product: IProduct }) => {
-  //  const quantities : IOptions[] =
+    const quantities : IOptions[] =range(3).map((i:number) => {
+        return { id: i, label: `${i} can`, enabled: true };
+    });
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(QUANTITIES[1]);
   return (
