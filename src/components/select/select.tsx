@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-
 export interface IOptions {
   id: number;
   label: string;
   enabled: boolean;
+  data: any;
 }
 
 export interface ISelectProps {

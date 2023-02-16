@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { IProduct } from "../../interfaces/iProduct";
 import { IProductInCart } from "../../interfaces/iProductInCart";
 
@@ -78,16 +78,16 @@ export const CartContext = React.createContext<ICartContext>({
   totalPrice: 0,
 });
 
-export const CartProvider = ({ children }: { children: any }) => {
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [productsInCart, setProductsInCart] = React.useState<IProductInCart[]>([]);
 
   const totalPrice = productsInCart.reduce((acc, p) => acc + p.price * p.quantity, 0);
   const totalQuantity = productsInCart.reduce((acc, p) => acc + p.quantity, 0);
 
-  const add = (productToAdd: IProduct) => {
+  const add = (productToAdd: IProduct,numToAdd = 1) => {
     const alreadyAddedProduct = productsInCart.find((p) => p.name === productToAdd.name);
     if (alreadyAddedProduct) {
-      alreadyAddedProduct.quantity++;
+      alreadyAddedProduct.quantity += numToAdd;
       setProductsInCart([...productsInCart]);
     } else {
       productsInCart.push({ ...productToAdd, quantity: 1 });
