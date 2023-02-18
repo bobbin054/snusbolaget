@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
-import { IProduct } from "../../interfaces/iProduct";
-import { IProductInCart } from "../../interfaces/iProductInCart";
+import { IProductInCart } from "../../interfaces/IProductInCart";
+import { IProduct } from "../../interfaces/IProduct";
+
 
 export interface ICartContext {
   productsInCart: IProductInCart[];

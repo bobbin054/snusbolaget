@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { IProduct } from "../../interfaces/iProduct";
+import { IProduct } from "../../interfaces/IProduct";
 import { ProductsContext } from "../productsProvider/productsProvider";
 import styles from "./productDetails.module.scss";
 export function ProductDetails() {

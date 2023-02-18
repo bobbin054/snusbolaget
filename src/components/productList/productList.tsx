@@ -3,7 +3,7 @@ import React from "react";
 import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
 import Select, { IOptions } from "../select/select";
-import { IProduct } from "../../interfaces/iProduct";
+import { IProduct } from "../../interfaces/IProduct";
 import styles from "./productList.module.scss";
 
 export function ProductList() {

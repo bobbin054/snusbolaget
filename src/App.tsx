@@ -4,10 +4,9 @@ import { ProductsProvider } from "./components/productsProvider/productsProvider
 import { Routes, Route } from "react-router-dom";
 import { ProductList } from "./components/productList/productList";
 import { Cart } from "./components/cart/cart";
+import { ProductDetails } from "./components/productDetails/productDetails";
 import "font-awesome/css/font-awesome.min.css";
 import "./app.scss";
-import { ProductDetails } from "./components/productDetails/productDetails";
-import SelectDemo from "./components/select/select";
 
 export default function App() {
   return (
