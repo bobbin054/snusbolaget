@@ -13,4 +13,3 @@ export interface IProduct {
   contentWeightUnit: string;
   producer: string;
 }
-
