@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SnusBolaget.API.Entities;
 
 namespace SnusBolaget.API.DBContexts
 {

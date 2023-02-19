@@ -1,6 +1,6 @@
 ﻿using SnusBolaget.API.Entities;
 
-namespace SnusBolagetAPI.Services
+namespace SnusBolaget.API.Services
 {
     public interface IProductsRepository
     {
