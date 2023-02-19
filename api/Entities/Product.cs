@@ -18,7 +18,5 @@ namespace SnusBolaget.API.Entities
         public string ContentWeight { get; set; }
         public string ContentWeightUnit { get; set; }
         public string Producer { get; set; }
-
-
     }
 }

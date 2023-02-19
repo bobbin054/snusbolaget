@@ -8,10 +8,7 @@ namespace SnusBolaget.API.DBContexts
         public DbSet<Product> Products { get; set; }
 
         public SnusbolagetContext(DbContextOptions<SnusbolagetContext> options)
-           : base(options)
-        {
-
-        }
+            : base(options) { }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -19,7 +16,6 @@ namespace SnusBolaget.API.DBContexts
         //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
         }
     }

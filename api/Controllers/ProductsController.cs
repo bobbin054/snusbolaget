@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SnusBolaget.API.Entities;
 using SnusBolaget.API.Services;
-using System.Xml.Linq;
 
 namespace SnusBolaget.API.Controllers
 {
@@ -18,12 +16,9 @@ namespace SnusBolaget.API.Controllers
             _productsRepository = productsRepository;
         }
 
-        
-
         [HttpGet(Name = "GetProducts")]
-        public async Task< IEnumerable<Product>> Get()
+        public async Task<IEnumerable<Product>> Get()
         {
-
             return await _productsRepository.GetProductsAsync();
         }
     }

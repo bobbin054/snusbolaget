@@ -1,12 +1,11 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SnusBolaget.API.DBContexts;
 using SnusBolaget.API.Entities;
 using SnusBolaget.API.Services;
 
 namespace Snusbolaget.API.Services
 {
-    public class ProductsRepository: IProductsRepository
+    public class ProductsRepository : IProductsRepository
     {
         private readonly SnusbolagetContext _context;
 
@@ -82,7 +81,7 @@ namespace Snusbolaget.API.Services
         //}
 
         //public async Task<PointOfInterest?> GetPointOfInterestForCityAsync(
-        //    int cityId, 
+        //    int cityId,
         //    int pointOfInterestId)
         //{
         //    return await _context.PointsOfInterest
@@ -97,7 +96,7 @@ namespace Snusbolaget.API.Services
         //                   .Where(p => p.CityId == cityId).ToListAsync();
         //}
 
-        //public async Task AddPointOfInterestForCityAsync(int cityId, 
+        //public async Task AddPointOfInterestForCityAsync(int cityId,
         //    PointOfInterest pointOfInterest)
         //{
         //    var city = await GetCityAsync(cityId, false);
@@ -111,7 +110,5 @@ namespace Snusbolaget.API.Services
         //{
         //    _context.PointsOfInterest.Remove(pointOfInterest);
         //}
-
-
     }
 }
