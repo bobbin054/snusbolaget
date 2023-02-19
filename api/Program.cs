@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Snusbolaget.API.Services;
 using SnusBolaget.API.DBContexts;
-using SnusBolagetAPI.Services;
+using SnusBolaget.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

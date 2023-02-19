@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SnusBolaget.API.Entities;
-using SnusBolagetAPI.Services;
+using SnusBolaget.API.Services;
 using System.Xml.Linq;
 
 namespace SnusBolaget.API.Controllers
