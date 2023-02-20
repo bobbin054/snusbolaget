@@ -1,7 +1,7 @@
+using api.Entities;
 using Microsoft.EntityFrameworkCore;
-using SnusBolaget.API.Entities;
 
-namespace SnusBolaget.API.DBContexts
+namespace api.DBContexts
 {
     public class SnusbolagetContext : DbContext
     {

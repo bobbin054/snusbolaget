@@ -1,4 +1,4 @@
-﻿namespace SnusBolaget.API.MockData
+﻿namespace api.MockData
 {
     public class Product
     {

@@ -1,12 +1,11 @@
-﻿using SnusBolaget.API.Entities;
+﻿using api.Entities;
 
-namespace SnusBolaget.API.Services
+namespace api.Services
 {
     public interface IProductsRepository
     {
         Task<IEnumerable<Product>> GetProductsAsync();
         Task<bool> SaveChangesAsync();
-        Task UpdateProductAsync(Product product);
         Task<bool> ProductExistsAsync(int productId);
         Task<Product?> GetProductAsync(int productId);
     }

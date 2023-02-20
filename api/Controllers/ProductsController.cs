@@ -1,9 +1,9 @@
+using api.Entities;
+using api.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using SnusBolaget.API.Entities;
-using SnusBolaget.API.Services;
 
-namespace SnusBolaget.API.Controllers
+namespace api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -40,24 +40,24 @@ namespace SnusBolaget.API.Controllers
                 return NotFound();
             }
 
-            var pointOfInterestToPatch = _mapper.Map<PointOfInterestForUpdateDto>(
-                pointOfInterestEntity
-            );
+            //var pointOfInterestToPatch = _mapper.Map<PointOfInterestForUpdateDto>(
+            //    pointOfInterestEntity
+            //);
 
-            patchDocument.ApplyTo(pointOfInterestToPatch, ModelState);
+            //patchDocument.ApplyTo(pointOfInterestToPatch, ModelState);
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (!TryValidateModel(pointOfInterestToPatch))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!TryValidateModel(pointOfInterestToPatch))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            _mapper.Map(pointOfInterestToPatch, pointOfInterestEntity);
-            await _cityInfoRepository.SaveChangesAsync();
+            //_mapper.Map(pointOfInterestToPatch, pointOfInterestEntity);
+            //await _cityInfoRepository.SaveChangesAsync();
 
             return NoContent();
         }

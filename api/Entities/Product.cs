@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SnusBolaget.API.Entities
+namespace api.Entities
 {
     public class Product
     {

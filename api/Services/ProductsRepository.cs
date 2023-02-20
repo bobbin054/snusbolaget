@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SnusBolaget.API.DBContexts;
-using SnusBolaget.API.Entities;
-using SnusBolaget.API.Services;
+﻿using api.DBContexts;
+using api.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Snusbolaget.API.Services
+namespace api.Services
 {
     public class ProductsRepository : IProductsRepository
     {
@@ -26,7 +25,7 @@ namespace Snusbolaget.API.Services
 
         public async Task<bool> SaveChangesAsync()
         {
-            return (await _context.SaveChangesAsync() >= 0);
+            return await _context.SaveChangesAsync() >= 0;
         }
 
         public async Task<bool> ProductExistsAsync(int productId)
@@ -90,7 +89,7 @@ namespace Snusbolaget.API.Services
         //    return await _context.Cities.AnyAsync(c => c.Id == cityId);
         //}
 
-       
+
         //public async Task<IEnumerable<PointOfInterest>> GetPointsOfInterestForCityAsync(
         //    int cityId)
         //{
