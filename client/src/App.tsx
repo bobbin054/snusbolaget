@@ -1,6 +1,5 @@
 import { Nav } from "./components/nav/nav";
 import { CartProvider } from "./components/cartProvider/cartProvider";
-import { ProductsProvider } from "./components/productsProvider/productsProvider";
 import { Routes, Route } from "react-router-dom";
 import { ProductList } from "./components/productList/productList";
 import { Cart } from "./components/cart/cart";
@@ -11,7 +10,6 @@ import "./app.scss";
 export default function App() {
   return (
     <CartProvider>
-      <ProductsProvider>
         <Routes>
           <Route path="/" element={<Nav />}>
             <Route path="/" element={<div>Snus is tasty</div>} />
@@ -23,7 +21,6 @@ export default function App() {
             <Route path="*" element={<div>You shall not pass!</div>} />
           </Route>
         </Routes>
-      </ProductsProvider>
     </CartProvider>
   );
 }

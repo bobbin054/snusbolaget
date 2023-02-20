@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useProducts } from "../../hooks/useProducts";
 import { IProduct } from "../../interfaces/IProduct";
-import { ProductsContext } from "../productsProvider/productsProvider";
 import styles from "./productDetails.module.scss";
 export function ProductDetails() {
   const { name } = useParams();
   if (!name) return <div>Product not found</div>;
-  const { getProduct } = React.useContext(ProductsContext);
+  const { getProduct } = useProducts();
   const product = getProduct(name);
   if (!product) return <div>Product not found</div>;
   return (

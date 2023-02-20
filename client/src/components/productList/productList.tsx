@@ -1,13 +1,13 @@
 import { CartContext } from "../cartProvider/cartProvider";
 import React from "react";
-import { ProductsContext } from "../productsProvider/productsProvider";
 import { Link } from "react-router-dom";
 import Select, { IOptions } from "../select/select";
 import { IProduct } from "../../interfaces/IProduct";
 import styles from "./productList.module.scss";
+import { useProducts } from "../../hooks/useProducts";
 
 export function ProductList() {
-  const { products } = React.useContext(ProductsContext);
+  const { products } = useProducts();
   return (
     <>
       <div className={`${styles.row} ${styles.gap}`}>
