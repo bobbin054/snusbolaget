@@ -1,5 +1,7 @@
 using api.Entities;
+using api.Models;
 using api.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,12 @@ namespace api.Controllers
     {
         //private readonly ILogger<ProductsController> _logger;
         private readonly IProductsRepository _productsRepository;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductsRepository productsRepository)
+        public ProductsController(IProductsRepository productsRepository, IMapper mapper)
         {
             _productsRepository = productsRepository;
+            _mapper = mapper;
         }
 
         [HttpGet(Name = "GetProducts")]
@@ -34,30 +38,30 @@ namespace api.Controllers
                 return NotFound();
             }
 
-            var pointOfInterestEntity = await _productsRepository.GetProductAsync(productId);
-            if (pointOfInterestEntity == null)
+            var productEntity = await _productsRepository.GetProductAsync(productId);
+            if (productEntity == null)
             {
                 return NotFound();
             }
 
-            //var pointOfInterestToPatch = _mapper.Map<PointOfInterestForUpdateDto>(
-            //    pointOfInterestEntity
-            //);
+            var productToPatch = _mapper.Map<ProductForUpdateDto>(
+                productEntity
+            );
 
-            //patchDocument.ApplyTo(pointOfInterestToPatch, ModelState);
+            patchDocument.ApplyTo(productToPatch, ModelState);
 
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            //if (!TryValidateModel(pointOfInterestToPatch))
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!TryValidateModel(productToPatch))
+            {
+                return BadRequest(ModelState);
+            }
 
-            //_mapper.Map(pointOfInterestToPatch, pointOfInterestEntity);
-            //await _cityInfoRepository.SaveChangesAsync();
+            _mapper.Map(productToPatch, productEntity);
+            await _productsRepository.SaveChangesAsync();
 
             return NoContent();
         }

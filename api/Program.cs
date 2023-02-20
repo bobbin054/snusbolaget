@@ -1,4 +1,5 @@
 using api.DBContexts;
+using api.profiles;
 using api.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,7 @@ builder.Services.AddDbContext<SnusbolagetContext>(
     dbContextOptions => dbContextOptions.UseSqlite(@"Data Source=snusbolaget.db;")
 );
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
-//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(ProductProfile));
 
 var app = builder.Build();
 
