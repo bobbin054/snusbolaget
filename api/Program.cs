@@ -11,7 +11,8 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://127.0.0.1:5173").AllowAnyHeader().AllowAnyMethod();
     });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SnusbolagetContext>(

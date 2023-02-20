@@ -14,6 +14,11 @@ namespace Snusbolaget.API.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        public async Task<Product> GetProductAsync(int id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
             return await _context.Products.ToListAsync();
@@ -22,6 +27,11 @@ namespace Snusbolaget.API.Services
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync() >= 0);
+        }
+
+        public async Task<bool> ProductExistsAsync(int productId)
+        {
+            return await _context.Products.AnyAsync(p => p.Id == productId);
         }
 
         //public async Task<bool> CityNameMatchesCityId(string? cityName, int cityId)
@@ -80,15 +90,7 @@ namespace Snusbolaget.API.Services
         //    return await _context.Cities.AnyAsync(c => c.Id == cityId);
         //}
 
-        //public async Task<PointOfInterest?> GetPointOfInterestForCityAsync(
-        //    int cityId,
-        //    int pointOfInterestId)
-        //{
-        //    return await _context.PointsOfInterest
-        //       .Where(p => p.CityId == cityId && p.Id == pointOfInterestId)
-        //       .FirstOrDefaultAsync();
-        //}
-
+       
         //public async Task<IEnumerable<PointOfInterest>> GetPointsOfInterestForCityAsync(
         //    int cityId)
         //{
