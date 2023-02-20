@@ -21,11 +21,13 @@ const ProductForm = ({ product }: { product: IProduct }) => {
   const descId = React.useId();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await axios.patch(`${PRODUCTS_ENDPOINT}/${product.id}`, [{
-      op: "replace",
-     path: "/description",
-      value: pendingProduct.description,
-    }]);
+    const result = await axios.patch(`${PRODUCTS_ENDPOINT}/${product.id}`, [
+      {
+        op: "replace",
+        path: "/description",
+        value: pendingProduct.description,
+      },
+    ]);
     console.log(result);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
