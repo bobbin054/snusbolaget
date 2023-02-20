@@ -14,6 +14,9 @@ export function Nav() {
           <Link className="nav__item" to="/products">
             /products
           </Link>
+          <Link className="nav__item" to="/admin">
+            /admin
+          </Link>
         </div>
         <div className="nav__group">
         <Link className="nav__item" to="/cart">
