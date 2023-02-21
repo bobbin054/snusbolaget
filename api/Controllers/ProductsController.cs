@@ -65,5 +65,28 @@ namespace api.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("{productId}")]
+        public async Task<ActionResult> UpdateProduct(
+            int productId,
+            ProductForUpdateDto productForUpdateDto
+        )
+        {
+            if (!await _productsRepository.ProductExistsAsync(productId))
+            {
+                return NotFound();
+            }
+
+            var productEntity = await _productsRepository.GetProductAsync(productId);
+            if (productEntity == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(productForUpdateDto, productEntity);
+            await _productsRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
