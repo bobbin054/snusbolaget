@@ -31,10 +31,11 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
   return (
     <form className={styles.formColumn} onSubmit={handleSubmit}>
       <label htmlFor={descId}>Description</label>
-      <input
+      <textarea
         id={descId}
-        type="text"
         value={pendingProduct.description}
+        rows={5}
+      
         onChange={(e) => setPendingProduct({ ...pendingProduct, description: e.target.value })}
       />
       <label htmlFor={priceId}>Price</label>
