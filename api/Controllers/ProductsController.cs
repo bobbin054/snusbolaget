@@ -88,5 +88,26 @@ namespace api.Controllers
 
             return NoContent();
         }
+
+       // Create new product
+        [HttpPost]
+        public async Task<ActionResult> CreateProduct(Product product)
+        {
+            await _productsRepository.AddProductAsync(product);
+            await _productsRepository.SaveChangesAsync();
+
+
+            return CreatedAtRoute(
+                "GetProducts",
+                new { productId = product.Id },
+                product
+            );
+
+        }
+
+      
+
     }
+
+
 }

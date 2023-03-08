@@ -8,5 +8,6 @@ namespace api.Services
         Task<bool> SaveChangesAsync();
         Task<bool> ProductExistsAsync(int productId);
         Task<Product?> GetProductAsync(int productId);
+        Task AddProductAsync(Product product);
     }
 }

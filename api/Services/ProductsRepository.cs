@@ -33,6 +33,12 @@ namespace api.Services
             return await _context.Products.AnyAsync(p => p.Id == productId);
         }
 
+        // Add a new product
+        public async Task AddProductAsync(Product product)
+        {
+           await _context.Products.AddAsync(product);
+        }
+
         //public async Task<bool> CityNameMatchesCityId(string? cityName, int cityId)
         //{
         //    return await _context.Cities.AnyAsync(c => c.Id == cityId && c.Name == cityName);
