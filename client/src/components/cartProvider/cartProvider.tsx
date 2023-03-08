@@ -118,7 +118,7 @@ export const CartProvider = ({ children }: { children?: ReactNode }) => {
     <CartContext.Provider
       value={{
         productsInCart,
-        add: add,
+        add,
         remove,
         totalQuantity,
         totalPrice,
