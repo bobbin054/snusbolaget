@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "start:server": "cd ..\\api && dotnet watch run",
+    "start": "concurrently \"npm run dev\" \"npm run start:server \"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -21,6 +21,7 @@
     "swr": "^2.0.3"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
