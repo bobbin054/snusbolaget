@@ -69,7 +69,7 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
       <img className={styles.imagePreview} src={pendingProduct.imageUrl} alt={pendingProduct.name} />
       <div className={styles.buttons}>
         <button type="submit">Save</button>
-        <button onClick={handleDelete}>Delete</button>
+        <button type="button" onClick={handleDelete}>Delete</button>
       </div>
     </form>
   );
