@@ -39,6 +39,12 @@ namespace api.Services
            await _context.Products.AddAsync(product);
         }
 
+        // Delete a product
+        public void DeleteProduct(Product product)
+        {
+            _context.Products.Remove(product);
+        }
+
         //public async Task<bool> CityNameMatchesCityId(string? cityName, int cityId)
         //{
         //    return await _context.Cities.AnyAsync(c => c.Id == cityId && c.Name == cityName);

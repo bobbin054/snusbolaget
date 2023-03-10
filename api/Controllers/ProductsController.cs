@@ -105,6 +105,21 @@ namespace api.Controllers
 
         }
 
+        // Delete product
+        [HttpDelete("{productId}")]
+        public async Task<ActionResult> DeleteProduct(int productId)
+        {
+            var product = await _productsRepository.GetProductAsync(productId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _productsRepository.DeleteProduct(product);
+            await _productsRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
       
 
     }

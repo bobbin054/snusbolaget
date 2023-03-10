@@ -3,17 +3,14 @@ import { PRODUCTS_ENDPOINT, useProducts } from "../../hooks/useProducts";
 import { IProduct } from "../../interfaces/IProduct";
 import axios from "axios";
 import styles from "./admin.module.scss";
-import auth from "../../auth/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import Signup from "../signup/Signup";
 
 export default () => {
-  const { products } = useProducts();
-  if (!products) return <div>Loading...</div>;
+  const { products,mutate,isLoading } = useProducts();
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
-      <CreateProductForm />
+      <CreateProductForm pendingProducts={products}  />
       {products?.map((product) => (
         <UpdateProductForm key={product.id} product={product} />
       ))}
@@ -22,7 +19,7 @@ export default () => {
 };
 
 const UpdateProductForm = ({ product }: { product: IProduct }) => {
-  const [pendingProduct, setPendingProduct] = React.useState(product);
+  const [pendingProduct, setPendingProduct] = React.useState<IProduct | null>(product);
   const descId = React.useId();
   const priceId = React.useId();
   const imageUrlId = React.useId();
@@ -32,6 +29,17 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
     const result = await axios.put(`${PRODUCTS_ENDPOINT}/${product.id}`, pendingProduct);
     console.log(result);
   };
+  const handleDelete = async () => {
+    const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
+    if (result.status === 204) {
+     // remove product from pendingProducts
+        
+    }
+    console.log(result);
+  };
+  if (pendingProduct === null) {
+    return null;
+  }
   return (
     <form className={styles.formColumn} onSubmit={handleSubmit}>
       <label htmlFor={descId}>Description</label>
@@ -57,21 +65,31 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
       />
       Image preview:
       <img className={styles.imagePreview} src={pendingProduct.imageUrl} alt={pendingProduct.name} />
-      <button type="submit">Save</button>
+      <div className={styles.buttons}>
+        <button type="submit">Save</button>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </form>
   );
 };
 
-const CreateProductForm = () => {
-  const [pendingProduct, setPendingProduct] = React.useState<Partial<IProduct>>({
-   
+const CreateProductForm = ({
+  pendingProducts,
+  
+}: {
+  pendingProducts: IProduct[] | undefined;
+  setPendingProducts: React.Dispatch<React.SetStateAction<IProduct[] | undefined>>;
+}) => {
+  const [pendingProduct, setPendingProduct] = React.useState<IProduct>({
+    id: undefined,
     name: "",
     type: "",
     nicotineAmount: "",
     description: "a",
     price: 1,
     starRating: 1,
-    imageUrl: "https://media.snusbolaget.se/snusbolaget/images/swm-874-2018-05-17-134527613/555/555/0/goteborgs-rape-white-portionssnus.png",
+    imageUrl:
+      "https://media.snusbolaget.se/snusbolaget/images/swm-874-2018-05-17-134527613/555/555/0/goteborgs-rape-white-portionssnus.png",
     nicotineLevel: "a",
     taste: "a",
     contentWeight: "a",
@@ -86,7 +104,8 @@ const CreateProductForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const result = await axios.post(PRODUCTS_ENDPOINT, pendingProduct);
-    console.log(result);
+    console.log(pendingProducts);
+    // if (pendingProducts) setPendingProducts([...pendingProducts, pendingProduct]);
   };
   return (
     <form className={styles.formColumn} onSubmit={handleSubmit}>
