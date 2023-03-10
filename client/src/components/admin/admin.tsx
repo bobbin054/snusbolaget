@@ -5,12 +5,12 @@ import axios from "axios";
 import styles from "./admin.module.scss";
 
 export default () => {
-  const { products,mutate,isLoading } = useProducts();
+  const { products, mutate, isLoading } = useProducts();
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
-      <CreateProductForm pendingProducts={products}  />
+      <CreateProductForm />
       {products?.map((product) => (
         <UpdateProductForm key={product.id} product={product} />
       ))}
@@ -19,6 +19,7 @@ export default () => {
 };
 
 const UpdateProductForm = ({ product }: { product: IProduct }) => {
+  const { products, mutate } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState<IProduct | null>(product);
   const descId = React.useId();
   const priceId = React.useId();
@@ -32,10 +33,11 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
   const handleDelete = async () => {
     const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
     if (result.status === 204) {
-     // remove product from pendingProducts
-        
+      if (pendingProduct) {
+        const newProducts = products?.filter((p) => p.id !== pendingProduct.id);
+        mutate(newProducts);
+      }
     }
-    console.log(result);
   };
   if (pendingProduct === null) {
     return null;
@@ -73,13 +75,8 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
   );
 };
 
-const CreateProductForm = ({
-  pendingProducts,
-  
-}: {
-  pendingProducts: IProduct[] | undefined;
-  setPendingProducts: React.Dispatch<React.SetStateAction<IProduct[] | undefined>>;
-}) => {
+const CreateProductForm = () => {
+  const { products, mutate } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState<IProduct>({
     id: undefined,
     name: "",
@@ -104,8 +101,9 @@ const CreateProductForm = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const result = await axios.post(PRODUCTS_ENDPOINT, pendingProduct);
-    console.log(pendingProducts);
-    // if (pendingProducts) setPendingProducts([...pendingProducts, pendingProduct]);
+    if (result.status === 201 && products) {
+      mutate([...products, pendingProduct]);
+    }
   };
   return (
     <form className={styles.formColumn} onSubmit={handleSubmit}>

@@ -12,7 +12,7 @@ async function fetcher(url: string): Promise<IProduct[]> {
 
 export const useProducts = () => {
   console.log("useProducts");
-  const { data:products, mutate,isLoading } = useSWR<IProduct[]>(PRODUCTS_ENDPOINT, fetcher);
+  const { data: products, mutate, isLoading } = useSWR<IProduct[]>(PRODUCTS_ENDPOINT, fetcher);
   const getProduct = (name: string) => {
     return products?.find((product) => product.name === name);
   };
