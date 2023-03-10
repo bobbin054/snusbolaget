@@ -5,7 +5,7 @@ import axios from "axios";
 import styles from "./admin.module.scss";
 
 export default () => {
-  const { products, mutate, isLoading } = useProducts();
+  const { products, isLoading } = useProducts();
   if (isLoading) return <div>Loading...</div>;
 
   return (
@@ -82,16 +82,16 @@ const CreateProductForm = () => {
     name: "",
     type: "",
     nicotineAmount: "",
-    description: "a",
-    price: 1,
+    description: "",
+    price: 0,
     starRating: 1,
     imageUrl:
       "https://media.snusbolaget.se/snusbolaget/images/swm-874-2018-05-17-134527613/555/555/0/goteborgs-rape-white-portionssnus.png",
-    nicotineLevel: "a",
-    taste: "a",
-    contentWeight: "a",
-    contentWeightUnit: "a",
-    producer: "a",
+    nicotineLevel: "",
+    taste: "",
+    contentWeight: "",
+    contentWeightUnit: "g",
+    producer: "",
   });
   const nameId = React.useId();
   const descId = React.useId();
