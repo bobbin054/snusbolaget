@@ -18,6 +18,45 @@ export default () => {
   );
 };
 
+const ProductForm = (handleSubmit,submitText)=>{
+ 
+  return (
+    <form className={styles.formColumn} onSubmit={handleSubmit}>
+      <label htmlFor={nameId}>Name</label>
+      <input
+        id={nameId}
+        type="text"
+        value={pendingProduct.name}
+        onChange={(e) => setPendingProduct({ ...pendingProduct, name: e.target.value })}
+      />
+      <label htmlFor={descId}>Description</label>
+      <textarea
+        id={descId}
+        value={pendingProduct.description}
+        rows={5}
+        onChange={(e) => setPendingProduct({ ...pendingProduct, description: e.target.value })}
+      />
+      <label htmlFor={priceId}>Price</label>
+      <input
+        id={priceId}
+        type="number"
+        value={pendingProduct.price}
+        onChange={(e) => setPendingProduct({ ...pendingProduct, price: Number(e.target.value) })}
+      />
+      <label htmlFor={imageUrlId}>Image URL</label>
+      <input
+        id={imageUrlId}
+        type="url"
+        value={pendingProduct.imageUrl}
+        onChange={(e) => setPendingProduct({ ...pendingProduct, imageUrl: e.target.value })}
+      />
+      Image preview:
+      <img className={styles.imagePreview} src={pendingProduct.imageUrl} alt={pendingProduct.name} />
+      <button type="submit">{submitText}</button>
+    </form>
+  );
+}
+
 const UpdateProductForm = ({ product }: { product: IProduct }) => {
   const { products, mutate } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState<IProduct | null>(product);
