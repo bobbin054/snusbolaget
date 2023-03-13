@@ -6,8 +6,13 @@ import useSWR, { mutate } from "swr";
 type STATUS = "idle" | "loading" | "error" | "success";
 export const PRODUCTS_ENDPOINT = "https://localhost:7083/Products";
 async function fetcher(url: string): Promise<IProduct[]> {
-  const response = await axios.get<IProduct[]>(url);
-  return response.data;
+  try {
+    const response = await axios.get<IProduct[]>(url);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 export const useProducts = () => {
