@@ -14,7 +14,7 @@ export default function App() {
       <CartProvider>
         <Routes>
           <Route path="/" element={<Nav />}>
-              <Route path="/" element={<div>Snus is tasty!</div>} />
+              <Route path="/" element={<div>Snus is tasty!!</div>} />
               <Route path="products">
                 <Route index element={<ProductList />} />
                 <Route path=":name" element={<ProductDetails />} />
