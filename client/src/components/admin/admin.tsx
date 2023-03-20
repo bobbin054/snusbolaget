@@ -1,5 +1,5 @@
 import React from "react";
-import { PRODUCTS_ENDPOINT, useProducts } from "../../hooks/useProducts";
+import { useProducts } from "../../hooks/useProducts";
 import { IProduct } from "../../interfaces/IProduct";
 import axios from "axios";
 import styles from "./admin.module.scss";
@@ -18,9 +18,8 @@ export default () => {
   );
 };
 
-
 const UpdateProductForm = ({ product }: { product: IProduct }) => {
-  const { products, mutate } = useProducts();
+  const { products, mutate, updateProduct } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState<IProduct | null>(product);
   const descId = React.useId();
   const priceId = React.useId();
@@ -28,7 +27,11 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await axios.put(`${PRODUCTS_ENDPOINT}/${product.id}`, pendingProduct);
+    if(!pendingProduct) return;
+    console.log("pendingProduct: ", pendingProduct);
+    
+    const result = await updateProduct(pendingProduct);
+    // const result = await axios.put(`${PRODUCTS_ENDPOINT}/${product.id}`, pendingProduct);
     console.log(result);
   };
   const handleDelete = async () => {
@@ -70,7 +73,9 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
       <img className={styles.imagePreview} src={pendingProduct.imageUrl} alt={pendingProduct.name} />
       <div className={styles.buttons}>
         <button type="submit">Save</button>
-        <button type="button" onClick={handleDelete}>Delete</button>
+        <button type="button" onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </form>
   );
