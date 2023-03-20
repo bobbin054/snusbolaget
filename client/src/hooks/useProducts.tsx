@@ -1,4 +1,3 @@
-import { IProduct } from "../interfaces/IProduct";
 import useSWR from "swr";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../interfaces/IDatabase";
@@ -21,7 +20,7 @@ export const useProducts = () => {
   const getProduct = (name: string) => {
     return products?.find((product) => product.name === name);
   };
-  const updateProduct = async (product: IProduct) => {
+  const updateProduct = async (product) => {
     const updateProduct: {
       contentWeight?: string | null;
       contentWeightUnit?: string | null;

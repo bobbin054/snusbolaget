@@ -1,6 +1,5 @@
 import React from "react";
 import { useProducts } from "../../hooks/useProducts";
-import { IProduct } from "../../interfaces/IProduct";
 import axios from "axios";
 import styles from "./admin.module.scss";
 
@@ -18,9 +17,9 @@ export default () => {
   );
 };
 
-const UpdateProductForm = ({ product }: { product: IProduct }) => {
+const UpdateProductForm = ({ product }) => {
   const { products, mutate, updateProduct } = useProducts();
-  const [pendingProduct, setPendingProduct] = React.useState<IProduct | null>(product);
+  const [pendingProduct, setPendingProduct] = React.useState(product);
   const descId = React.useId();
   const priceId = React.useId();
   const imageUrlId = React.useId();
@@ -35,13 +34,13 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
     console.log(result);
   };
   const handleDelete = async () => {
-    const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
-    if (result.status === 204) {
-      if (pendingProduct) {
-        const newProducts = products?.filter((p) => p.id !== pendingProduct.id);
-        mutate(newProducts);
-      }
-    }
+    // const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
+    // if (result.status === 204) {
+    //   if (pendingProduct) {
+    //     const newProducts = products?.filter((p) => p.id !== pendingProduct.id);
+    //     mutate(newProducts);
+    //   }
+    // }
   };
   if (pendingProduct === null) {
     return null;
@@ -83,7 +82,7 @@ const UpdateProductForm = ({ product }: { product: IProduct }) => {
 
 const CreateProductForm = () => {
   const { products, mutate } = useProducts();
-  const [pendingProduct, setPendingProduct] = React.useState<IProduct>({
+  const [pendingProduct, setPendingProduct] = React.useState({
     id: undefined,
     name: "",
     type: "",
@@ -105,11 +104,11 @@ const CreateProductForm = () => {
   const imageUrlId = React.useId();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const result = await axios.post(PRODUCTS_ENDPOINT, pendingProduct);
-    if (result.status === 201 && products) {
-      mutate([...products, pendingProduct]);
-    }
+    // e.preventDefault();
+    // const result = await axios.post(PRODUCTS_ENDPOINT, pendingProduct);
+    // if (result.status === 201 && products) {
+    //   mutate([...products, pendingProduct]);
+    // }
   };
   return (
     <form className={styles.formColumn} onSubmit={handleSubmit}>
@@ -148,19 +147,19 @@ const CreateProductForm = () => {
   );
 };
 
-const PatchField = ({ product }: { product: IProduct }) => {
+const PatchField = ({ product }) => {
   const [pendingProduct, setPendingProduct] = React.useState(product);
   const patchDescId = React.useId();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const result = await axios.patch(`${PRODUCTS_ENDPOINT}/${product.id}`, [
-      {
-        op: "replace",
-        path: "/description",
-        value: pendingProduct.description,
-      },
-    ]);
-    console.log(result);
+    // e.preventDefault();
+    // const result = await axios.patch(`${PRODUCTS_ENDPOINT}/${product.id}`, [
+    //   {
+    //     op: "replace",
+    //     path: "/description",
+    //     value: pendingProduct.description,
+    //   },
+    // ]);
+    // console.log(result);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPendingProduct({ ...pendingProduct, description: e.target.value });
