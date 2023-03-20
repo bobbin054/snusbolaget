@@ -1,19 +1,19 @@
-import React from "react";
-import { CartContext, ICartContext } from "../cartProvider/cartProvider";
-import "./CartPreview.scss";
+import React from 'react';
+import { CartContext, ICartContext } from '../cartProvider/cartProvider';
+import './CartPreview.scss';
 
 export function CartPreview({a,b,c}: {a?: string, b?: string, c?: string}) {
-  const { totalPrice, totalQuantity } = React.useContext<ICartContext>(CartContext);
+    const { totalPrice, totalQuantity } = React.useContext<ICartContext>(CartContext);
 
-  return (
-    <div className="cart-preview">
-      <div className="ml-bs mr-bs">
-        <i className="fa fa-shopping-cart mr-bs"></i>
-        {totalQuantity}
-      </div>
-      <div className="vl"></div>
-      <div className="cart-preview__right mr-bs">{totalPrice} kr</div>
-      <span className="fa fa-chevron-circle-right"></span>
-    </div>
-  );
+    return (
+        <div className="cart-preview">
+            <div className="ml-bs mr-bs">
+                <i className="fa fa-shopping-cart mr-bs"></i>
+                {totalQuantity}
+            </div>
+            <div className="vl"></div>
+            <div className="cart-preview__right mr-bs">{totalPrice} kr</div>
+            <span className="fa fa-chevron-circle-right"></span>
+        </div>
+    );
 }
