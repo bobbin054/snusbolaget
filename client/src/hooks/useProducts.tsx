@@ -1,16 +1,9 @@
 import useSWR from "swr";
-import { createClient } from "@supabase/supabase-js";
-import { Database } from "../interfaces/IDatabase";
-
-const supabaseUrl = "https://ivfguobvnkblumlcqcod.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2Zmd1b2J2bmtibHVtbGNxY29kIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzgzNzU1NjksImV4cCI6MTk5Mzk1MTU2OX0.I0QRDquizwDLkbN6kY_Vp-Ro-p0-Xg17Yh18KzpOSu4";
-const supabase = createClient<Database>(supabaseUrl, supabaseKey);
-
+import { supabase, supabaseUrl } from "../supabaseClient/supabaseClient";
 async function fetcher() {
   const { data } = await supabase.from("Products").select("*");
   console.log("data: ", data);
-  return  data;
+  return data;
 }
 
 export const useProducts = () => {
@@ -51,10 +44,10 @@ export const useProducts = () => {
       taste: product.taste,
       type: product.type,
     };
-    
-   const response = await supabase.from("Products").update(updateProduct).eq("id", product.id);
-   console.log("response: ", response);
-   return response.data;
+
+    const response = await supabase.from("Products").update(updateProduct).eq("id", product.id);
+    console.log("response: ", response);
+    return response.data;
   };
   return {
     products,
