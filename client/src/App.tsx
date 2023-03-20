@@ -6,7 +6,7 @@ import { Cart } from './components/cart/cart';
 import { ProductDetails } from './components/productDetails/productDetails';
 import 'font-awesome/css/font-awesome.min.css';
 import './app.scss';
-import Admin from './components/admin/admin';
+import { Admin } from './components/admin/admin';
 import Login from './components/login/login';
 
 export default function App() {

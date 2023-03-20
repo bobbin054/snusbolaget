@@ -1,4 +1,3 @@
-import styles from './select.module.scss';
 export interface IOptions {
   id: number;
   label: string;

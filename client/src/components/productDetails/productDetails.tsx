@@ -5,8 +5,8 @@ import { IProduct } from '../../interfaces/IProduct';
 import styles from './productDetails.module.scss';
 export function ProductDetails() {
     const { name } = useParams();
-    if (!name) return <div>Product not found</div>;
     const { getProduct } = useProducts();
+    if (!name) return <div>Product not found</div>;
     const product = getProduct(name);
     if (!product) return <div>Product not found</div>;
     return (

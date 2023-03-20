@@ -25,7 +25,7 @@ const QUANTITIES: IOptions[] = [
 ];
 
 const Product = ({ product }: { product: IProduct }) => {
-    const quantities: IOptions[] = QUANTITIES.map((q: IOptions, i) => {
+    const quantities: IOptions[] = QUANTITIES.map((q: IOptions) => {
         if (q.data === 1) {
             return { ...q, label: `${q.label} - ${product.price} kr` };
         }

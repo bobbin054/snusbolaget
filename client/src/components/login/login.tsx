@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import Auth from "../auth/auth";
 import Account from "../account/account";
 import { supabase } from "../../supabaseClient/supabaseClient";
+import { Session } from "@supabase/supabase-js";
 
 function Login() {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState<null | Session>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

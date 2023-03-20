@@ -2,7 +2,7 @@ import React from 'react';
 import { CartContext, ICartContext } from '../cartProvider/cartProvider';
 import './CartPreview.scss';
 
-export function CartPreview({a,b,c}: {a?: string, b?: string, c?: string}) {
+export function CartPreview() {
     const { totalPrice, totalQuantity } = React.useContext<ICartContext>(CartContext);
 
     return (
