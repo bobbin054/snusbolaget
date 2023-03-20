@@ -22,7 +22,7 @@ export function ProductDetails() {
 const AboutTheProduct = ({ product }: { product: IProduct }) => {
   return (
     <>
-      <img className={styles.img} src={product?.imageUrl} title={product?.name} alt="product image" />
+      <img className={styles.img} src={product?.imageUrl ?? ""} title={product?.name ?? ""} alt="product image" />
       <h2>{product?.name}</h2>
       <p>{product?.description}</p>
       <table>

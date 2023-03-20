@@ -29,14 +29,14 @@ const Product = ({ product }: { product: IProduct }) => {
     if (q.data === 1) {
       return { ...q, label: `${q.label} - ${product.price} kr` };
     }
-    return { ...q, label: `${q.label} (${product.price} kr/st) - ${product.price * q.data} kr` };
+    return { ...q, label: `${q.label} (${product.price} kr/st) - ${product.price ?? 0 * q.data} kr` };
   });
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(quantities[1]);
   return (
     <div key={product.id} className={styles.column}>
       <Link to={`/products/${product.name}`}>
-        <img src={product.imageUrl} title={product.name} className={styles.img} alt="product image" />
+        <img src={product.imageUrl ?? ""} title={product.name ?? ""} className={styles.img} alt="product image" />
       </Link>
       <div>{product.name}</div>
       <div className={`${styles.row}`}>

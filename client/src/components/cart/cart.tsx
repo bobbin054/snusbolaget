@@ -30,7 +30,7 @@ export function Cart() {
             return (
               <tr key={productInCart.id} className="table-row align-baseline">
                 <td>
-                  <img className={styles.smallImg} src={productInCart.imageUrl} alt={productInCart.imageUrl} />
+                  <img className={styles.smallImg} src={productInCart.imageUrl ?? ""} alt={productInCart.imageUrl ?? ""} />
                 </td>
                 <td>{productInCart.name}</td>
                 <td>
@@ -55,7 +55,7 @@ export function Cart() {
                   </button>
                 </td>
                 <td>{productInCart.price}</td>
-                <td>{productInCart.price * productInCart.quantity} </td>
+                <td>{productInCart.price ?? 0 * productInCart.quantity} </td>
                 <td>
                   <button
                     type="button"
