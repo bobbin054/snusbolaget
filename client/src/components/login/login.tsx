@@ -9,6 +9,7 @@ function Login() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log("session: ", session);
       setSession(session);
     });
 
@@ -17,11 +18,7 @@ function Login() {
     });
   }, []);
 
-  return (
-    <div className="container" style={{ padding: "50px 0 100px 0" }}>
-      {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-    </div>
-  );
+  return <>{!session ? <Auth /> : <Account key={session.user.id} session={session} />}</>;
 }
 
 export default Login;
