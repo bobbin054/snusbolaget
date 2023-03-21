@@ -1,9 +1,10 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useSession } from "../../hooks/useSession";
 import { CartPreview } from "../cartPreview/cartPreview";
 import "./nav.scss";
 
 export function Nav() {
+  const { session } = useSession();
   return (
     <>
       <nav className="nav">
@@ -22,7 +23,7 @@ export function Nav() {
           <Link className="nav__item" to="/login">
             <div className="nav__icon-group">
               <i className="fa fa-user fa-2x"></i>
-              <p className="nav__icon-text">Login</p>
+              <p className="nav__icon-text">{session?.user.email ?? "Login"}</p>
             </div>
           </Link>
           <Link className="nav__item" to="/cart">

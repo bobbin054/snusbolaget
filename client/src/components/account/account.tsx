@@ -47,6 +47,7 @@ export default function Account({ session }) {
   return (
     <>
       <pre> profile: {JSON.stringify(profile, null, 2)}</pre>
+      <pre> session: {JSON.stringify(session, null, 2)}</pre>
       <div>
         <button type="button" onClick={() => supabase.auth.signOut()}>
           Sign Out
