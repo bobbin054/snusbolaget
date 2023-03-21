@@ -1,11 +1,11 @@
 import { PostgrestSingleResponse } from "@supabase/supabase-js";
 import { useState, useEffect } from "react";
-import { IProfile } from "../interfaces/IProfile";
+import { Profile } from "../interfaces/IDatabase";
 import { supabase } from "../supabaseClient/supabaseClient";
 
 export default function useProfile({ session }) {
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<PostgrestSingleResponse<IProfile>>({} as PostgrestSingleResponse<IProfile>);
+  const [profile, setProfile] = useState<PostgrestSingleResponse<Profile>>({} as PostgrestSingleResponse<Profile>);
 
   useEffect(() => {
     async function getProfile() {
