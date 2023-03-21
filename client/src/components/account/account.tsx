@@ -20,26 +20,6 @@ export default function Account({ session }) {
     getProfile();
   }, [session]);
 
-  async function updateProfile(event) {
-    event.preventDefault();
-
-    setLoading(true);
-    const { user } = session;
-
-    const updates = {
-      id: user.id,
-
-      updated_at: new Date(),
-    };
-
-    const { error } = await supabase.from("profiles").upsert(updates);
-
-    if (error) {
-      alert(error.message);
-    }
-    setLoading(false);
-  }
-
   if (loading) {
     return <div>Loading...</div>;
   }
