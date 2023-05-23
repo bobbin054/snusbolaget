@@ -17,7 +17,7 @@ export function Nav() {
           <Link className="nav__item" to="/products">
             /products
           </Link>
-          {profile.data?.admin && (
+          {profile.data?.Row.admin && (
             <Link className="nav__item" to="/admin">
               /admin
             </Link>
@@ -27,7 +27,7 @@ export function Nav() {
           <Link className="nav__item" to="/login">
             <div className="nav__icon-group">
               <i className="fa fa-user fa-2x"></i>
-              <p className="nav__icon-text">{profile?.data?.username ?? "Login"}</p>
+              <p className="nav__icon-text">{profile?.data?.Row.username ?? "Login"}</p>
             </div>
           </Link>
           <Link className="nav__item" to="/cart">
