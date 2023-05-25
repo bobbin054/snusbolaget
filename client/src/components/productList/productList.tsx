@@ -10,6 +10,7 @@ export function ProductList() {
     const { products } = useProducts();
     return (
         <>
+        {!products && <div>Loading ...</div>}
             <div className={`${styles.row} ${styles.gap}`}>
                 {products?.map((product) => {
                     return <Product key={product.id} product={product}></Product>;

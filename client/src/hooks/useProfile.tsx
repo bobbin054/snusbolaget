@@ -10,7 +10,8 @@ export default function useProfile({ session }) {
   useEffect(() => {
     async function getProfile() {
       setLoading(true);
-      setProfile(await supabase.from("profiles").select("*").eq("id", session.user.id).single());
+      console.log("profiles: ", await supabase.from("profiles").select("id"));
+      setProfile(await supabase.from("profiles").select("*").eq("id", session?.user?.id).single());
       setLoading(false);
     }
     getProfile();
