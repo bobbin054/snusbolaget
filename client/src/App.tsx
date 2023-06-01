@@ -2,11 +2,11 @@ import { Nav } from "./components/nav";
 import { CartProvider } from "./components/cartProvider";
 import { Routes, Route, BrowserRouter, Outlet } from "react-router-dom";
 import { ProductList } from "./components/productList/productList";
-import { Cart } from "./components/cart/cart";
+import { Cart } from "./components/cart";
 import { ProductDetails } from "./components/productDetails";
 import "font-awesome/css/font-awesome.min.css";
 import "./app.scss";
-import { Admin } from "./components/admin/admin";
+import { Admin } from "./components/admin";
 import Login from "./components/login";
 
 export default function App() {
