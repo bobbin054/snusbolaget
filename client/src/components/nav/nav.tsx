@@ -42,7 +42,7 @@ export function Nav() {
         <NavGroup>
           <StyledLink to="/">snus online</StyledLink>
           <StyledLink to="/products">/products</StyledLink>
-          {profile.data?.admin && <StyledLink to="/admin">/admin</StyledLink>}
+          {profile?.data?.admin && <StyledLink to="/admin">/admin</StyledLink>}
         </NavGroup>
         <NavGroup>
           <StyledLink to="/login">
