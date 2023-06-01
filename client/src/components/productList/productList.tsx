@@ -1,22 +1,29 @@
 import { CartContext } from "../cartProvider/cartProvider";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Select, { IOptions } from "../select/select";
 import { IProduct } from "../../interfaces/IProduct";
 import styles from "./productList.module.scss";
 import { useProducts } from "../../hooks/useProducts";
 import styled from "styled-components";
 
+const ProductListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, clamp(200px, 250px, 300px));
+  justify-content: center;
+  gap: 8px;
+`;
+
 export function ProductList() {
   const { products } = useProducts();
   return (
     <>
       {!products && <div>Loading ...</div>}
-      <div className={`${styles.row} ${styles.gap}`}>
+      <ProductListContainer>
         {products?.map((product) => {
           return <Product key={product.id} product={product}></Product>;
         })}
-      </div>
+      </ProductListContainer>
     </>
   );
 }
@@ -36,18 +43,16 @@ const ProductContainer = styled.div`
 `;
 
 const Sticker = styled.div`
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    background-color: red;
-    color: white;
-    padding: 0.25rem;
-    border-radius: 0 0 1rem 0;
-    font-size: 0.5rem;
-    font-weight: bold;  
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background-color: red;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 0 0 1rem 0;
+  font-size: 0.5rem;
+  font-weight: bold;
 `;
-
-
 
 const Product = ({ product }: { product: IProduct }) => {
   const quantities: IOptions[] = QUANTITIES.map((q: IOptions) => {
@@ -60,7 +65,7 @@ const Product = ({ product }: { product: IProduct }) => {
   const [quantity, setQuantity] = React.useState(quantities[1]);
   return (
     <ProductContainer key={product.id}>
-        <Sticker>Extra expensive</Sticker>
+      <Sticker>Extra expensive</Sticker>
       <Link to={`/products/${product.name}`}>
         <img src={product.imageUrl ?? ""} title={product.name ?? ""} className={styles.img} alt="product image" />
       </Link>
@@ -77,6 +82,7 @@ const Product = ({ product }: { product: IProduct }) => {
           <i className="fa fa-cart-plus"></i> Add to cart
         </button>
       </div>
+      <Outlet />
     </ProductContainer>
   );
 };

@@ -5,7 +5,9 @@ import { supabase } from "../supabaseClient/supabaseClient";
 
 export default function useProfile({ session }) {
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<PostgrestSingleResponse<Database['public']['Tables']['profiles']>>({} as PostgrestSingleResponse<Database['public']['Tables']['profiles']>);
+  const [profile, setProfile] = useState<PostgrestSingleResponse<Database["public"]["Tables"]["profiles"]["Row"]>>(
+    {} as PostgrestSingleResponse<Database["public"]["Tables"]["profiles"]["Row"]>
+  );
 
   useEffect(() => {
     async function getProfile() {
