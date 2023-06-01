@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './cart.module.scss';
-import { CartContext } from '../cartProvider/cartProvider';
+import { CartContext } from '../cartProvider';
 import { Link } from 'react-router-dom';
 
 export function Cart() {

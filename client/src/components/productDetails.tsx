@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useProducts } from "../../hooks/useProducts";
-import { IProduct } from "../../interfaces/IProduct";
+import { useProducts } from "../hooks/useProducts";
+import { IProduct } from "../interfaces/IProduct";
 import styled from "styled-components";
 
 export function ProductDetails() {

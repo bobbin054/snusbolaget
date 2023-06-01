@@ -1,7 +1,7 @@
-import { CartContext } from "../cartProvider/cartProvider";
+import { CartContext } from "../cartProvider";
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import Select, { IOptions } from "../select/select";
+import Select, { IOptions } from "../select";
 import { IProduct } from "../../interfaces/IProduct";
 import styles from "./productList.module.scss";
 import { useProducts } from "../../hooks/useProducts";

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartContext, ICartContext } from '../cartProvider/cartProvider';
+import { CartContext, ICartContext } from '../cartProvider';
 import './CartPreview.scss';
 
 export function CartPreview() {

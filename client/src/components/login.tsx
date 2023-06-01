@@ -1,6 +1,6 @@
-import Auth from "../auth/auth";
-import Account from "../account/account";
-import { useSession } from "../../hooks/useSession";
+import Auth from "./auth";
+import Account from "./account";
+import { useSession } from "../hooks/useSession";
 
 function Login() {
   const { session } = useSession();
