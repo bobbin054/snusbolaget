@@ -27,15 +27,6 @@ const VerticalLine = styled.div`
   padding: 0;
   height: 50px;
 `;
-const MarginRightLarge = styled.div`
-  margin-right: 16px;
-`;
-const MarginRightSmall = styled.div`
-  margin-right: 8px;
-`;
-const MarginLeftSmall = styled.div`
-  margin-left: 8px;
-`;
 export function CartPreview() {
   const { totalPrice, totalQuantity } = React.useContext<ICartContext>(CartContext);
   return (
