@@ -7,11 +7,36 @@ import styles from "./productList.module.scss";
 import { useProducts } from "../../hooks/useProducts";
 import styled from "styled-components";
 
+const QUANTITIES: IOptions[] = [
+  { id: 1, label: "1 can", enabled: true, data: 1 },
+  { id: 2, label: "10 cans", enabled: true, data: 10 },
+  { id: 3, label: "30 cans", enabled: true, data: 30 },
+];
+
 const ProductListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, clamp(200px, 250px, 300px));
   justify-content: center;
   gap: 8px;
+`;
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  position: relative;
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.2);
+`;
+const Sticker = styled.div`
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background-color: red;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 0 0 1rem 0;
+  font-size: 0.5rem;
+  font-weight: bold;
 `;
 
 export function ProductList() {
@@ -27,32 +52,6 @@ export function ProductList() {
     </>
   );
 }
-const QUANTITIES: IOptions[] = [
-  { id: 1, label: "1 can", enabled: true, data: 1 },
-  { id: 2, label: "10 cans", enabled: true, data: 10 },
-  { id: 3, label: "30 cans", enabled: true, data: 30 },
-];
-
-const ProductContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  position: relative;
-  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.2);
-`;
-
-const Sticker = styled.div`
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  background-color: red;
-  color: white;
-  padding: 0.25rem;
-  border-radius: 0 0 1rem 0;
-  font-size: 0.5rem;
-  font-weight: bold;
-`;
 
 const Product = ({ product }: { product: IProduct }) => {
   const quantities: IOptions[] = QUANTITIES.map((q: IOptions) => {
