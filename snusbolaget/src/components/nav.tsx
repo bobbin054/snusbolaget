@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useProfile from "../hooks/useProfile";
 import { useSession } from "../hooks/useSession";
-import { CartPreview } from "./cartPreview/cartPreview";
+import { CartPreview } from "./cartPreview";
 import styled from "styled-components";
 
 const NavWrapper = styled.nav`

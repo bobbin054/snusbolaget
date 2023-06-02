@@ -1,6 +1,5 @@
 import React from "react";
-import { CartContext, ICartContext } from "../cartProvider";
-import "./CartPreview.scss";
+import { CartContext, ICartContext } from "./cartProvider";
 import styled from "styled-components";
 
 const borderColor = "#d41920";
@@ -17,26 +16,23 @@ const CartPreviewWrapper = styled.div`
   align-items: center;
   align-content: center;
 `;
-const FlexEnd = styled.div`
-    display: flex;
-    justify-content: flex-end;
-`;
+
 const VerticalLine = styled.div`
   border-left: 5px solid ${borderColor};
   margin: 0;
   padding: 0;
-  height: 50px;
+  height: 45px;
 `;
 export function CartPreview() {
   const { totalPrice, totalQuantity } = React.useContext<ICartContext>(CartContext);
   return (
     <CartPreviewWrapper>
-      <div className="ml-bs mr-bs">
-        <i className="fa fa-shopping-cart mr-bs"></i>
+      <div className="ml-4 mr-2">
+        <i className="fa fa-shopping-cart mr-2"></i>
         {totalQuantity}
       </div>
       <VerticalLine />
-      <FlexEnd className="mr-bs">{totalPrice} kr</FlexEnd>
+      <div className="mr-2 flex justify-end">{totalPrice} kr</div>
       <span className="fa fa-chevron-circle-right"></span>
     </CartPreviewWrapper>
   );
