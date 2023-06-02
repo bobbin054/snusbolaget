@@ -7,7 +7,7 @@ const QuantityButton = styled.button`
   border: none;
   background: none;
 `;
-const StyledTable = styled.table`
+const CartTable = styled.table`
   width: 100%;
   border-style: none;
   th {
@@ -19,18 +19,6 @@ const StyledTable = styled.table`
     border-left: none;
     border-right: none;
   }
-`;
-const SmallImg = styled.img`
-  width: 50px;
-  height: auto;
-  object-fit: cover;
-  margin-right: 1rem;
-`;
-const RemoveButton = styled.button`
-  color: red;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
 `;
 const EmptyCartDiv = styled.div`
   font-size: 1.5rem;
@@ -50,7 +38,7 @@ export function Cart() {
   }
   return (
     <>
-      <StyledTable>
+      <CartTable>
         <thead>
           <tr>
             <th></th>
@@ -95,9 +83,9 @@ export function Cart() {
                 <td>{productInCart.price}</td>
                 <td>{productInCart.price ?? 0 * productInCart.quantity} </td>
                 <td>
-                  <RemoveButton
+                  <button
                     type="button"
-                    className={`fa fa-trash-o trash-can-xmark`}
+                    className={`fa fa-trash-o trash-can-xmark text-red-500`}
                     title="Remove from cart"
                     onClick={() => {
                       remove(productInCart);
@@ -108,7 +96,7 @@ export function Cart() {
             );
           })}
         </tbody>
-      </StyledTable>
+      </CartTable>
       <div className="alert alert-success">Total: {totalPrice}</div>
     </>
   );
