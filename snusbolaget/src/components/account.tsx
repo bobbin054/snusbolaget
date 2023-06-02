@@ -4,12 +4,11 @@ import { supabase } from "../supabaseClient/supabaseClient";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] =
-    useState<
-      PostgrestSingleResponse<{
-        [x: string]: string | number | Date | boolean | null;
-      }>
-    >();
+  const [profile, setProfile] = useState<
+    PostgrestSingleResponse<{
+      [x: string]: string | number | Date | boolean | null;
+    }>
+  >();
 
   useEffect(() => {
     async function getProfile() {

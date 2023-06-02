@@ -9,8 +9,6 @@ const QuantityButton = styled.button`
 `;
 const StyledTable = styled.table`
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   border-style: none;
   th {
     text-align: left;
@@ -68,7 +66,11 @@ export function Cart() {
             return (
               <tr key={productInCart.id}>
                 <td>
-                  <SmallImg src={productInCart.imageUrl ?? ""} alt={productInCart.imageUrl ?? ""} />
+                  <img
+                    className={`w-12 h-auto object-cover mr-4`}
+                    src={productInCart.imageUrl ?? ""}
+                    alt={productInCart.imageUrl ?? ""}
+                  />
                 </td>
                 <td>{productInCart.name}</td>
                 <td>
