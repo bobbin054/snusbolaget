@@ -12,7 +12,7 @@ const StyledImg = styled.img`
   width: 100px;
   height: auto;
 `;
-const StyledButton = styled.button`
+const StyledButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

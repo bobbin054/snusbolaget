@@ -1,7 +1,7 @@
 import { Nav } from "./components/nav";
 import { CartProvider } from "./components/cartProvider";
 import { Routes, Route, BrowserRouter, Outlet } from "react-router-dom";
-import { ProductGrid } from "./components/productList/productLGrid";
+import { ProductGrid } from "./components/productGrid";
 import { Cart } from "./components/cart";
 import { ProductDetails } from "./components/productDetails";
 import "font-awesome/css/font-awesome.min.css";
