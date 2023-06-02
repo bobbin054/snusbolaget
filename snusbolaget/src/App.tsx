@@ -1,7 +1,7 @@
 import { Nav } from "./components/nav";
 import { CartProvider } from "./components/cartProvider";
 import { Routes, Route, BrowserRouter, Outlet } from "react-router-dom";
-import { ProductList } from "./components/productList/productList";
+import { ProductGrid } from "./components/productList/productLGrid";
 import { Cart } from "./components/cart";
 import { ProductDetails } from "./components/productDetails";
 import "font-awesome/css/font-awesome.min.css";
@@ -25,7 +25,7 @@ export default function App() {
           >
             <Route path="/" element={<div>Snus is tasty!!!</div>} />
             <Route path="products">
-              <Route index element={<ProductList />} />
+              <Route index element={<ProductGrid />} />
               <Route path=":name" element={<ProductDetails />} />
             </Route>
             <Route path="login" element={<Login />} />

@@ -39,7 +39,7 @@ const Sticker = styled.div`
   font-weight: bold;
 `;
 
-export function ProductList() {
+export function ProductGrid() {
   const { products } = useProducts();
   return (
     <>
