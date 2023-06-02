@@ -88,6 +88,5 @@ const H2 = styled.h2`
 const Img = styled.img`
   max-width: 50%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 `;
