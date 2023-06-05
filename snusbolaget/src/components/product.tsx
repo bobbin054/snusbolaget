@@ -50,7 +50,7 @@ export const Product = ({ product }: { product: IProduct }) => {
     if (q.data === 1) {
       return { ...q, label: `${q.label} - ${product.price} kr` };
     }
-    return { ...q, label: `${q.label} (${product.price} kr/st) - ${product.price ?? 0 * q.data} kr` };
+    return { ...q, label: `${q.label} (${product.price} kr/st) - ${(product.price ?? 0) * q.data} kr` };
   });
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(quantities[1]);

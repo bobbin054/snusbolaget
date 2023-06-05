@@ -15,15 +15,11 @@ export interface ISelectProps {
   className?: string;
 }
 
-const StyledSelect = styled.select`
-  height: max-content;
-`;
-
 export default function Select({ label, options, selected, setSelected, className }: ISelectProps) {
   return (
     <>
       {label && <label htmlFor="quantity">Quantity</label>}
-      <StyledSelect
+      <select
         className={className}
         title="quantity"
         name="quantity"
@@ -35,7 +31,7 @@ export default function Select({ label, options, selected, setSelected, classNam
             {option.label}
           </option>
         ))}
-      </StyledSelect>
+      </select>
     </>
   );
 }
