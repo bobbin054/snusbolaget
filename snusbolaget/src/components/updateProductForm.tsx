@@ -1,17 +1,7 @@
 import React from "react";
 import { useProducts } from "../hooks/useProducts";
-import styled from "styled-components";
 import ProductForm from "./productForm";
 
-const StyledButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 8px;
-  * {
-    width: 100%;
-  }
-`;
 export function UpdateProductForm({ product }) {
   const { products, mutate, updateProduct } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState(product);
@@ -61,12 +51,21 @@ export function UpdateProductForm({ product }) {
       />
       Image preview:
       <img src={pendingProduct.imageUrl} alt={pendingProduct.name} className="w-20" />
-      <StyledButton>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleDelete}>
+      <div className="grid grid-cols-2 gap-4">
+        <button
+          type="submit"
+          className="rounded-lg border-green-600 border-solid border-2 text-base transition-all hover:bg-green-600 hover:text-white"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="rounded-lg border-red-600 border-solid border-2 text-base transition-all hover:bg-red-600 hover:text-white"
+        >
           Delete
         </button>
-      </StyledButton>
+      </div>
     </ProductForm>
   );
 }
