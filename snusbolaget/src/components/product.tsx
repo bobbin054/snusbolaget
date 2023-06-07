@@ -9,10 +9,10 @@ import { IProduct } from "../interfaces/IProduct";
 const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: auto;
   position: relative;
   box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  align-items: center;
 `;
 const Sticker = styled.div`
   position: absolute;
@@ -33,16 +33,14 @@ const StyledButton = styled.button`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 8px;
-  font-weight: 600;
-  font-size: 14px;
+  font-size: 1rem;
 `;
 
 const StyledSelect = styled(Select)`
-  border-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   font-weight: 600;
-  font-size: 14px;
+  border: 4px solid yellow;
 `;
 
 export const Product = ({ product }: { product: IProduct }) => {
@@ -61,7 +59,7 @@ export const Product = ({ product }: { product: IProduct }) => {
         <img src={product.imageUrl ?? ""} className="h-100" title={product.name ?? ""} alt="product image" />
       </Link>
       <div>{product.name}</div>
-      <div>
+      <div className="self-start flex flex-row  bg-green-700 text-xs">
         <StyledSelect options={quantities} selected={quantity} setSelected={setQuantity}></StyledSelect>
         <StyledButton
           type="button"

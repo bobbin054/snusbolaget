@@ -17,10 +17,10 @@ export default function App() {
           <Route
             path="/"
             element={
-              <>
+              <div>
                 <Nav />
                 <Outlet />
-              </>
+              </div>
             }
           >
             <Route path="/" element={<div>Snus is tasty!!!</div>} />

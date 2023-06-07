@@ -3,10 +3,16 @@ import styled from "styled-components";
 import { Product } from "./product";
 
 const ProductListContainer = styled.div`
+  // css var column width
   display: grid;
-  grid-template-columns: repeat(4, clamp(200px, 250px, 300px));
   justify-content: center;
-  gap: 8px;
+  --columnWidth: 300px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--columnWidth), 1fr));
+  min-width: calc(4 * var(--columnWidth));
+  --columnGap: 8px;
+  max-width: calc(4 * var(--columnWidth) + 3 * var(--columnGap));
+  gap: var(--columnGap);
+  margin-inline: 88px;
 `;
 
 export function ProductGrid() {
