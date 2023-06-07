@@ -1,12 +1,6 @@
 import React from "react";
 import { useProducts } from "../hooks/useProducts";
-import styled from "styled-components";
 import ProductForm from "./productForm";
-
-const StyledImg = styled.img`
-  width: 100px;
-  height: auto;
-`;
 export function CreateProductForm() {
   const { products, mutate } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState({
@@ -68,7 +62,7 @@ export function CreateProductForm() {
         onChange={(e) => setPendingProduct({ ...pendingProduct, imageUrl: e.target.value })}
       />
       Image preview:
-      <StyledImg src={pendingProduct.imageUrl} alt={pendingProduct.name} />
+      <img src={pendingProduct.imageUrl} alt={pendingProduct.name} className="w-20" />
       <button type="submit">Create (NOT IMPLEMENTED)</button>
     </ProductForm>
   );

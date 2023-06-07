@@ -2,10 +2,7 @@ import React from "react";
 import { useProducts } from "../hooks/useProducts";
 import styled from "styled-components";
 import ProductForm from "./productForm";
-const StyledImg = styled.img`
-  width: 100px;
-  height: auto;
-`;
+
 const StyledButton = styled.div`
   display: flex;
   flex-direction: row;
@@ -63,7 +60,7 @@ export function UpdateProductForm({ product }) {
         onChange={(e) => setPendingProduct({ ...pendingProduct, imageUrl: e.target.value })}
       />
       Image preview:
-      <StyledImg src={pendingProduct.imageUrl} alt={pendingProduct.name} />
+      <img src={pendingProduct.imageUrl} alt={pendingProduct.name} className="w-20" />
       <StyledButton>
         <button type="submit">Save</button>
         <button type="button" onClick={handleDelete}>
