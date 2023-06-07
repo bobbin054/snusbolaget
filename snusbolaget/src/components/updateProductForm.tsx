@@ -1,13 +1,7 @@
 import React from "react";
 import { useProducts } from "../hooks/useProducts";
 import styled from "styled-components";
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-`;
+import ProductForm from "./productForm";
 const StyledImg = styled.img`
   width: 100px;
   height: auto;
@@ -46,7 +40,7 @@ export function UpdateProductForm({ product }) {
     return null;
   }
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <ProductForm onSubmit={handleSubmit}>
       <label htmlFor={descId}>Description</label>
       <textarea
         id={descId}
@@ -76,6 +70,6 @@ export function UpdateProductForm({ product }) {
           Delete
         </button>
       </StyledButton>
-    </StyledForm>
+    </ProductForm>
   );
 }

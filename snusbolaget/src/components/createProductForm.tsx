@@ -1,14 +1,8 @@
 import React from "react";
 import { useProducts } from "../hooks/useProducts";
 import styled from "styled-components";
+import ProductForm from "./productForm";
 
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-`;
 const StyledImg = styled.img`
   width: 100px;
   height: auto;
@@ -44,7 +38,7 @@ export function CreateProductForm() {
     // }
   };
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <ProductForm onSubmit={handleSubmit}>
       <label htmlFor={nameId}>Name</label>
       <input
         id={nameId}
@@ -76,6 +70,6 @@ export function CreateProductForm() {
       Image preview:
       <StyledImg src={pendingProduct.imageUrl} alt={pendingProduct.name} />
       <button type="submit">Create (NOT IMPLEMENTED)</button>
-    </StyledForm>
+    </ProductForm>
   );
 }
