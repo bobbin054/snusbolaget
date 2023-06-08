@@ -1,9 +1,9 @@
-import { useProducts } from "../hooks/useProducts";
+import { useProductsAPI } from "../hooks/useProducts";
 import { CreateProductForm } from "./createProductForm";
 import { UpdateProductForm } from "./updateProductForm";
 
 export function Admin() {
-  const { products, isLoading } = useProducts();
+  const { products, isLoading } = useProductsAPI();
   if (isLoading) return <div>Loading...</div>;
   return (
     <>

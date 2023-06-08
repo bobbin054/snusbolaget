@@ -1,4 +1,4 @@
-import { useProducts } from "../hooks/useProducts";
+import { useProductsAPI } from "../hooks/useProducts";
 import styled from "styled-components";
 import { Product } from "./product";
 
@@ -16,7 +16,7 @@ const ProductListContainer = styled.div`
 `;
 
 export function ProductGrid() {
-  const { products } = useProducts();
+  const { products } = useProductsAPI();
   return (
     <>
       {!products && <div>Loading ...</div>}

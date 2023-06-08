@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import useProfile from "../hooks/useProfile";
-import { useSession } from "../hooks/useSession";
+import useProfileAPI from "../hooks/useProfile";
+import { useSessionAPI } from "../hooks/useSession";
 import { CartPreview } from "./cartPreview";
 import styled from "styled-components";
 
@@ -33,8 +33,8 @@ const StyledLink = styled(Link)`
 `;
 
 export function Nav() {
-  const { session } = useSession();
-  const { profile } = useProfile({ session });
+  const { session } = useSessionAPI();
+  const { profile } = useProfileAPI({ session });
   console.log("profile", profile);
   return (
     <>

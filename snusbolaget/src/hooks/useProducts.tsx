@@ -6,7 +6,7 @@ async function fetcher() {
   return productsResponse.data;
 }
 
-export const useProducts = () => {
+export const useProductsAPI = () => {
   const { data: products, mutate, isLoading } = useSWR(supabaseUrl, fetcher);
   const getProduct = (name: string) => {
     return products?.find((product) => product.name === name);

@@ -1,8 +1,8 @@
 import React from "react";
-import { useProducts } from "../hooks/useProducts";
+import { useProductsAPI } from "../hooks/useProducts";
 import ProductForm from "./productForm";
 export function CreateProductForm() {
-  const { products, mutate } = useProducts();
+  const { products, mutate } = useProductsAPI();
   const [pendingProduct, setPendingProduct] = React.useState({
     id: undefined,
     name: "",

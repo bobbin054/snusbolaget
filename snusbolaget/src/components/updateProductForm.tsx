@@ -1,9 +1,9 @@
 import React from "react";
-import { useProducts } from "../hooks/useProducts";
+import { useProductsAPI } from "../hooks/useProducts";
 import ProductForm from "./productForm";
 
 export function UpdateProductForm({ product }) {
-  const {updateProduct } = useProducts();
+  const {updateProduct } = useProductsAPI();
   const [pendingProduct, setPendingProduct] = React.useState(product);
   const descId = React.useId();
   const priceId = React.useId();

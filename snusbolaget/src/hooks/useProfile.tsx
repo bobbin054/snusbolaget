@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Database } from "../interfaces/IDatabase";
 import { supabase } from "../supabaseClient/supabaseClient";
 
-export default function useProfile({ session }) {
+export default function useProfileAPI({ session }) {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] =
     useState<PostgrestSingleResponse<Database["public"]["Tables"]["profiles"]["Row"]> | null>(null);

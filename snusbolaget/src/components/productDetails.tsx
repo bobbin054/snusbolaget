@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useProducts } from "../hooks/useProducts";
+import { useProductsAPI } from "../hooks/useProducts";
 import { IProduct } from "../interfaces/IProduct";
 import styled from "styled-components";
 
 export function ProductDetails() {
   const { name } = useParams();
-  const { getProduct } = useProducts();
+  const { getProduct } = useProductsAPI();
   if (!name) return <div>Product not found</div>;
   const product = getProduct(name);
   if (!product) return <div>Product not found</div>;
