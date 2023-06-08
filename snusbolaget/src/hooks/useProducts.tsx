@@ -28,12 +28,22 @@ export const useProductsAPI = () => {
     }
     return data;
   };
+  const deleteProduct = async (product) => {
+    console.log("Delete product: ", product);
+    const { data, error } = await supabase.from("Products").delete().eq("id", product.id);
+    if (error) {
+      console.log("Error: ", error);
+      return;
+    }
+    return data;
+  };
   return {
     products,
     isLoading,
     getProduct,
     updateProduct,
     createProduct,
+    deleteProduct,
     mutate,
   };
 };

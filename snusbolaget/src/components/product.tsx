@@ -36,13 +36,6 @@ const StyledButton = styled.button`
   font-size: 1rem;
 `;
 
-const StyledSelect = styled(Select)`
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  font-weight: 600;
-  border: 4px solid yellow;
-`;
-
 export const Product = ({ product }: { product: IProduct }) => {
   const quantities: IOptions[] = QUANTITIES.map((q: IOptions) => {
     if (q.data === 1) {
@@ -59,13 +52,19 @@ export const Product = ({ product }: { product: IProduct }) => {
         <img src={product.imageUrl ?? ""} className="h-100" title={product.name ?? ""} alt="product image" />
       </Link>
       <div>{product.name}</div>
-      <div className="self-start flex flex-row  bg-green-700 text-xs">
-        <StyledSelect options={quantities} selected={quantity} setSelected={setQuantity}></StyledSelect>
+      <div className="self-start flex flex-row  text-base min-w-full">
+        <Select
+          options={quantities}
+          selected={quantity}
+          setSelected={setQuantity}
+          className="w-full border-4 rounded-r-none border-red rounded"
+        ></Select>
         <StyledButton
           type="button"
           onClick={() => {
             return add(product, quantity.data);
           }}
+          className="w-full border-4 rounded-l-none border-red rounded"
         >
           <i className="fa fa-cart-plus"></i> Add to cart
         </StyledButton>

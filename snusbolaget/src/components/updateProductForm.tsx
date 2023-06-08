@@ -3,7 +3,7 @@ import { useProductsAPI } from "../hooks/useProducts";
 import ProductForm from "./productForm";
 
 export function UpdateProductForm({ product }) {
-  const {updateProduct } = useProductsAPI();
+  const {updateProduct,deleteProduct } = useProductsAPI();
   const [pendingProduct, setPendingProduct] = React.useState(product);
   const descId = React.useId();
   const priceId = React.useId();
@@ -14,13 +14,8 @@ export function UpdateProductForm({ product }) {
     await updateProduct(pendingProduct);
   };
   const handleDelete = async () => {
-    // const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
-    // if (result.status === 204) {
-    //   if (pendingProduct) {
-    //     const newProducts = products?.filter((p) => p.id !== pendingProduct.id);
-    //     mutate(newProducts);
-    //   }
-    // }
+    if (!pendingProduct) return;
+    await deleteProduct(pendingProduct);
   };
   if (pendingProduct === null) {
     return null;

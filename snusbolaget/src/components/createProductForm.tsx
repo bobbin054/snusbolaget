@@ -62,8 +62,13 @@ export function CreateProductForm() {
         onChange={(e) => setPendingProduct({ ...pendingProduct, imageUrl: e.target.value })}
       />
       Image preview:
-      <img  src={pendingProduct.imageUrl} alt={pendingProduct.name} className="w-20" />
-      <button type="submit" className="rounded-lg border-green-600 border-solid border-2 text-base transition-all hover:bg-green-600 hover:text-white">Create (NOT IMPLEMENTED)</button>
+      <img src={pendingProduct.imageUrl} alt={pendingProduct.name} className="w-20" />
+      <button
+        type="submit"
+        className="rounded-lg border-green-600 border-solid border-2 text-base transition-all hover:bg-green-600 hover:text-white"
+      >
+        Create
+      </button>
     </ProductForm>
   );
 }

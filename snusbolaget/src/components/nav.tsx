@@ -35,7 +35,6 @@ const StyledLink = styled(Link)`
 export function Nav() {
   const { session } = useSessionAPI();
   const { profile } = useProfileAPI({ session });
-  console.log("profile", profile);
   return (
     <>
       <NavWrapper>

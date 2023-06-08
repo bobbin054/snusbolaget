@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 export interface IOptions {
   id: number;
   label: string;
