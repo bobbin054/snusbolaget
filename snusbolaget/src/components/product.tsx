@@ -57,7 +57,7 @@ export const Product = ({ product }: { product: IProduct }) => {
           options={quantities}
           selected={quantity}
           setSelected={setQuantity}
-          className="w-full border-4 rounded-r-none border-red rounded"
+          className="w-full border-4 rounded-r-none border-gray-500 border-r-0 rounded"
         ></Select>
         <StyledButton
           type="button"
