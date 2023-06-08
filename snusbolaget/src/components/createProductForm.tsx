@@ -2,9 +2,9 @@ import React from "react";
 import { useProductsAPI } from "../hooks/useProducts";
 import ProductForm from "./productForm";
 export function CreateProductForm() {
-  const { products, mutate } = useProductsAPI();
+  const { createProduct } = useProductsAPI();
   const [pendingProduct, setPendingProduct] = React.useState({
-    id: undefined,
+    id: crypto.randomUUID(),
     name: "",
     type: "Portion",
     nicotineAmount: "",
@@ -23,22 +23,13 @@ export function CreateProductForm() {
   const descId = React.useId();
   const priceId = React.useId();
   const imageUrlId = React.useId();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    // const result = await axios.post(PRODUCTS_ENDPOINT, pendingProduct);
-    // if (result.status === 201 && products) {
-    //   mutate([...products, pendingProduct]);
-    // }
-    // setPendingProduct({
-    //   id: undefined,
-    
-
-
-    mutate([products, pendingProduct]);
+  const handleSubmitCreateProduct = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("pendingProduct: ", pendingProduct);
+    await createProduct(pendingProduct);
   };
   return (
-    <ProductForm onSubmit={handleSubmit}>
+    <ProductForm onSubmit={handleSubmitCreateProduct}>
       <label htmlFor={nameId}>Name</label>
       <input
         id={nameId}

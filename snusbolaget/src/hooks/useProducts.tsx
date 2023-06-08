@@ -19,11 +19,21 @@ export const useProductsAPI = () => {
       .eq("id", product.id);
     return product;
   };
+  const createProduct = async (product) => {
+    console.log("Create product: ", product);
+    const { data, error } = await supabase.from("Products").insert([product]);
+    if (error) {
+      console.log("Error: ", error);
+      return;
+    }
+    return data;
+  };
   return {
     products,
     isLoading,
     getProduct,
     updateProduct,
+    createProduct,
     mutate,
   };
 };
