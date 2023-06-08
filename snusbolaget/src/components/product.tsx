@@ -51,7 +51,7 @@ export const Product = ({ product }: { product: IProduct }) => {
       <Link to={`/products/${product.name}`}>
         <img src={product.imageUrl ?? ""} className="h-100" title={product.name ?? ""} alt="product image" />
       </Link>
-      <div>{product.name}</div>
+      <h2 className="text-lg underline">{product.name}</h2>
       <div className="self-start flex flex-row  text-base min-w-full">
         <Select
           options={quantities}
