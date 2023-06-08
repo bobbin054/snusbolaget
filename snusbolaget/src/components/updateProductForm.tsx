@@ -3,16 +3,15 @@ import { useProducts } from "../hooks/useProducts";
 import ProductForm from "./productForm";
 
 export function UpdateProductForm({ product }) {
-  const { products, mutate, updateProduct } = useProducts();
+  const {updateProduct } = useProducts();
   const [pendingProduct, setPendingProduct] = React.useState(product);
   const descId = React.useId();
   const priceId = React.useId();
   const imageUrlId = React.useId();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitUpdateProduct = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!pendingProduct) return;
-    const result = await updateProduct(pendingProduct);
+    await updateProduct(pendingProduct);
   };
   const handleDelete = async () => {
     // const result = await axios.delete(`${PRODUCTS_ENDPOINT}/${product.id}`);
@@ -27,7 +26,7 @@ export function UpdateProductForm({ product }) {
     return null;
   }
   return (
-    <ProductForm onSubmit={handleSubmit}>
+    <ProductForm onSubmit={handleSubmitUpdateProduct}>
       <label htmlFor={descId}>Description</label>
       <textarea
         id={descId}

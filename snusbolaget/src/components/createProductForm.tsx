@@ -9,7 +9,7 @@ export function CreateProductForm() {
     type: "Portion",
     nicotineAmount: "",
     description: "",
-    price: null,
+    price: 0,
     starRating: 1,
     imageUrl:
       "https://media.snusbolaget.se/snusbolaget/images/swm-874-2018-05-17-134527613/555/555/0/goteborgs-rape-white-portionssnus.png",
