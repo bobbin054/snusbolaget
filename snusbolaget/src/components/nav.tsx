@@ -6,17 +6,16 @@ import styled from "styled-components";
 
 const NavWrapper = styled.nav`
   display: flex;
-  background-color: #41464b;
-  box-shadow: -1px 0px 20px 1px;
-  margin: 0;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   justify-content: space-between;
   height: 70px;
+  padding: 10px 15px;
+  margin: 0;
+  margin-bottom: 20px;
   isolation: isolate;
+  position: sticky;
+  z-index: 1;
+  background-color: #41464b;
+  box-shadow: -1px 0px 20px 1px;
 `;
 const NavGroup = styled.div`
   display: flex;
