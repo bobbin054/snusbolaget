@@ -6,7 +6,7 @@ import { CartContext } from "./cartProvider";
 import { Link, Outlet } from "react-router-dom";
 import { IProduct } from "../interfaces/IProduct";
 
-const ProductContainer = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -36,6 +36,8 @@ const StyledButton = styled.button`
   font-size: 1rem;
 `;
 
+const ProductImg = styled.img``;
+
 export const Product = ({ product }: { product: IProduct }) => {
   const quantities: IOptions[] = QUANTITIES.map((q: IOptions) => {
     if (q.data === 1) {
@@ -46,30 +48,28 @@ export const Product = ({ product }: { product: IProduct }) => {
   const { add } = React.useContext(CartContext);
   const [quantity, setQuantity] = React.useState(quantities[1]);
   return (
-    <ProductContainer key={product.id}>
+    <Wrapper key={product.id}>
       <Sticker>Extra expensive</Sticker>
       <Link to={`/products/${product.name}`}>
-        <img src={product.imageUrl ?? ""} className="h-100" title={product.name ?? ""} alt="product image" />
+        <ProductImg src={product.imageUrl ?? ""} title={product.name ?? ""} alt="product image" />
       </Link>
       <h2 className="text-lg underline">{product.name}</h2>
-      <div className="self-start flex flex-row  text-base min-w-full">
-        <Select
-          options={quantities}
-          selected={quantity}
-          setSelected={setQuantity}
-          className="w-full border-4 rounded-r-none border-gray-500 border-r-0 rounded"
-        ></Select>
-        <StyledButton
-          type="button"
-          onClick={() => {
-            return add(product, quantity.data);
-          }}
-          className="w-full border-4 rounded-l-none border-red rounded"
-        >
-          <i className="fa fa-cart-plus"></i> Add to cart
-        </StyledButton>
-      </div>
+      <Select
+        options={quantities}
+        selected={quantity}
+        setSelected={setQuantity}
+        className="w-full border-2 border-gray-500 rounded"
+      ></Select>
+      <StyledButton
+        type="button"
+        onClick={() => {
+          return add(product, quantity.data);
+        }}
+        className="w-full border-4 rounded-l-none border-red rounded"
+      >
+        <i className="fa fa-cart-plus"></i> Add to cart
+      </StyledButton>
       <Outlet />
-    </ProductContainer>
+    </Wrapper>
   );
 };

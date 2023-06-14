@@ -11,8 +11,9 @@ const NavWrapper = styled.nav`
   padding: 10px 15px;
   margin: 0;
   margin-bottom: 20px;
-  isolation: isolate;
   position: sticky;
+  top: 0;
+  isolation: isolate;
   z-index: 1;
   background-color: #41464b;
   box-shadow: -1px 0px 20px 1px;

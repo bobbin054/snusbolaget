@@ -3,16 +3,21 @@ import styled from "styled-components";
 import { Product } from "./product";
 
 const ProductListContainer = styled.div`
-  // css var column width
   display: grid;
-  justify-content: center;
-  --columnWidth: 300px;
-  grid-template-columns: repeat(auto-fit, minmax(var(--columnWidth), 1fr));
-  min-width: calc(4 * var(--columnWidth));
-  --columnGap: 8px;
-  max-width: calc(4 * var(--columnWidth) + 3 * var(--columnGap));
-  gap: var(--columnGap);
-  margin-inline: 88px;
+  grid-template-columns: repeat(4, 1fr);
+
+  grid-gap: 1vw;
+  margin-inline: min(20vw, 20%);
+  @media (width <= 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+  }
+  @media (width <= 412px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (width <= 320px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export function ProductGrid() {
